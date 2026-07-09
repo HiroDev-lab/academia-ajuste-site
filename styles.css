@@ -1,0 +1,1461 @@
+/* =========================================================
+   Academia Ajuste — Hero (protótipo de animações)
+   Paleta: vermelho #E5141B | preto #0a0506
+   ========================================================= */
+
+:root{
+  --red:#CC1F27;          /* cor oficial da marca (Elementor global primary) */
+  --red-deep:#a3171d;
+  --red-bright:#e22730;
+  --ink:#0a0506;
+  --white:#ffffff;
+  --grey:#b9b3b4;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Poppins",system-ui,Arial,sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  padding-bottom:0;
+  background:#120608 url("assets/bg.png") center top/cover no-repeat;
+  overflow:hidden;
+  isolation:isolate;
+}
+/* leitura: escurece levemente o fundo p/ o conteúdo */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,5,6,.55) 0%,rgba(10,5,6,.15) 35%,rgba(10,5,6,.55) 100%);
+  pointer-events:none;
+}
+
+/* ---------- fundo com movimento fluido/suave ---------- */
+.hero__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+.fx-blob{
+  position:absolute;border-radius:50%;filter:blur(70px);
+  mix-blend-mode:screen;opacity:.55;will-change:transform;
+}
+.fx-blob--1{
+  width:46vw;height:46vw;left:-6vw;top:8vw;
+  background:radial-gradient(circle at 50% 50%,rgba(204,31,39,.85),rgba(204,31,39,0) 70%);
+  animation:drift1 26s ease-in-out infinite alternate;
+}
+.fx-blob--2{
+  width:38vw;height:38vw;right:-4vw;top:-6vw;
+  background:radial-gradient(circle at 50% 50%,rgba(255,60,40,.6),rgba(255,60,40,0) 70%);
+  animation:drift2 32s ease-in-out infinite alternate;
+}
+.fx-blob--3{
+  width:30vw;height:30vw;left:38vw;bottom:-10vw;
+  background:radial-gradient(circle at 50% 50%,rgba(150,10,15,.7),rgba(150,10,15,0) 70%);
+  animation:drift3 38s ease-in-out infinite alternate;
+}
+/* brilho diagonal que cruza lentamente */
+.fx-sheen{
+  position:absolute;top:-30%;left:-40%;width:60%;height:160%;
+  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.05) 45%,rgba(255,255,255,.09) 50%,rgba(255,255,255,.05) 55%,transparent 100%);
+  transform:rotate(8deg);
+  animation:sheen 18s linear infinite;
+}
+@keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(6vw,4vw) scale(1.15)}}
+@keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-5vw,5vw) scale(1.12)}}
+@keyframes drift3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(4vw,-4vw) scale(1.18)}}
+@keyframes sheen{0%{left:-50%}100%{left:140%}}
+
+/* =========================================================
+   NAV — logo + menu + CTA
+   ========================================================= */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;gap:16px;
+  padding:13px clamp(20px,5vw,70px);
+  /* faixa de vidro (transparência + blur) + divisória embaixo */
+  background:linear-gradient(180deg,rgba(20,7,9,.55),rgba(20,7,9,.30));
+  backdrop-filter:blur(12px) saturate(130%);
+  -webkit-backdrop-filter:blur(12px) saturate(130%);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.nav__logo{margin-right:auto;display:block;line-height:0}
+/* logo SVG oficial "academia ajuste" (vetorial, 5088x2005) — tamanho reservado p/ a animação */
+.nav__logo img{
+  height:47px;width:119px;object-fit:contain;display:block;
+  transform-origin:left center;will-change:transform;
+  transition:transform .35s var(--ease-out),filter .35s ease;
+}
+/* hover da logo */
+.nav__logo:hover img{transform:scale(1.07) rotate(-1.5deg);filter:drop-shadow(0 6px 16px rgba(204,31,39,.6))}
+
+.nav__menu{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;align-items:center;gap:clamp(16px,2.2vw,42px);
+}
+.nav__menu a{
+  position:relative;font-weight:600;font-size:16px;letter-spacing:.3px;
+  color:#f2eded;padding:6px 2px;opacity:.92;transition:color .25s ease;white-space:nowrap;
+}
+.nav__menu a.is-active{color:var(--red)}
+.nav__menu a::after{
+  content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease-out);
+}
+.nav__menu a:hover{color:#fff}
+.nav__menu a:hover::after{transform:scaleX(1)}
+.nav__menu a.is-active::after{transform:scaleX(1)}
+
+.nav__cta{
+  flex:0 0 auto;
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  background:var(--red);color:#fff;font-weight:700;font-size:15px;letter-spacing:.4px;
+  padding:13px 24px;border-radius:8px;
+  box-shadow:0 8px 24px rgba(204,31,39,.35);
+  transition:transform .25s var(--ease-out),box-shadow .25s ease,background .25s ease;
+}
+.nav__cta:hover{transform:translateY(-2px) scale(1.04);background:var(--red-bright);box-shadow:0 12px 30px rgba(204,31,39,.55)}
+.nav__cta-arrow{transition:transform .25s var(--ease-out)}
+.nav__cta:hover .nav__cta-arrow{transform:translateX(4px)}
+.nav__cta--mobile{display:none}
+
+/* hambúrguer (mobile) */
+.nav__toggle{
+  display:none;flex:0 0 auto;
+  width:46px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:6px;
+  background:transparent;border:0;cursor:pointer;padding:8px;
+}
+.nav__toggle span{display:block;height:3px;width:26px;background:#fff;border-radius:3px;
+  transition:transform .3s var(--ease-out),opacity .2s ease}
+.nav.is-open .nav__toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.nav.is-open .nav__toggle span:nth-child(2){opacity:0}
+.nav.is-open .nav__toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+/* =========================================================
+   ATLETAS
+   ========================================================= */
+.athlete{position:absolute;bottom:0;z-index:5;pointer-events:none;transition:opacity .4s ease}
+/* fotos já têm gradiente no rodapé -> sem drop-shadow e sem float (ficam alinhadas embaixo) */
+.athlete img{height:100%;width:auto;display:block;position:relative;z-index:1;animation:floaty 7s ease-in-out infinite}
+.athlete--right img{animation-duration:8.5s;animation-delay:-2.5s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+/* glow vermelho atrás da silhueta (faz o atleta de roupa preta "saltar" do fundo, como na referência) */
+.athlete::before{
+  content:"";position:absolute;z-index:0;left:-12%;right:-12%;bottom:0;height:92%;
+  background:radial-gradient(ellipse 58% 66% at 50% 58%,rgba(204,31,39,.55),rgba(204,31,39,0) 72%);
+  filter:blur(14px);
+}
+/* IGUALADAS POR ALTURA -> cabeças e base no mesmo nível (independe do enquadramento) */
+.athlete--left{left:0;height:clamp(380px,70vh,740px)}
+.athlete--right{right:0;height:clamp(380px,70vh,740px)}
+
+/* =========================================================
+   CONTEÚDO CENTRAL
+   ========================================================= */
+.hero__content{
+  position:relative;z-index:20;
+  flex:1 1 auto;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  width:100%;max-width:780px;margin:0 auto;
+  padding:clamp(16px,3vh,40px) 24px;text-align:center;
+}
+/* escurece levemente atrás do texto p/ legibilidade (mesmo com atletas atrás) */
+.hero__content::before{
+  content:"";position:absolute;inset:-8% -14%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 68% 78% at 50% 46%,rgba(10,5,6,.6) 0%,rgba(10,5,6,.28) 46%,transparent 74%);
+}
+
+/* headline c/ animação de "rolagem" (sobe de dentro da máscara) */
+.headline{
+  font-family:"Bebas Neue","Poppins",sans-serif;
+  font-weight:400;font-style:italic;
+  font-size:clamp(46px,7vw,96px);line-height:.92;letter-spacing:1px;
+  text-transform:uppercase;
+  text-shadow:0 4px 24px rgba(0,0,0,.45);
+}
+.headline__mask{display:block;overflow:hidden;padding:2px 0}
+.headline__line{display:block;will-change:transform}
+.headline__line--2{color:#f4f1f1}
+
+.hero__lead{
+  margin:22px auto 0;max-width:620px;
+  font-size:clamp(15px,1.25vw,18px);line-height:1.6;color:#e7e2e3;
+  text-shadow:0 2px 12px rgba(0,0,0,.5);
+}
+
+.hero__btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.hbtn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:15px;letter-spacing:.5px;
+  padding:15px 30px;border-radius:30px;
+  transition:transform .25s var(--ease-out),box-shadow .25s ease;
+}
+.hbtn--primary{background:linear-gradient(180deg,#e22730,#a3171d);color:#fff;box-shadow:0 10px 26px rgba(204,31,39,.4)}
+.hbtn--ghost{background:linear-gradient(180deg,#3a3a3a,#0c0c0c);color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.45)}
+.hbtn:hover{transform:translateY(-3px) scale(1.04)}
+.hbtn--primary:hover{box-shadow:0 16px 34px rgba(204,31,39,.6)}
+/* brilho que cruza no hover */
+.hbtn::before{
+  content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-18deg);transition:left .6s ease;
+}
+.hbtn:hover::before{left:140%}
+
+/* =========================================================
+   BLOCO DE NÚMEROS
+   ========================================================= */
+/* Banner ENTRE vermelho(hero) e cinza. Camadas: cinza-abaixo + hexágono vermelho
+   + faixa branca só no topo (contorno). Base do CSS enviado pelo usuário.
+   Pontos da geometria (% da largura): pontas 20/80, cantos-topo 24.2/75.8. */
+.numbers{
+  position:absolute;z-index:25;left:0;right:0;width:100%;
+  top:calc(clamp(150px,20vh,196px) * -0.5);   /* sobe metade: topo sobre o vermelho do hero */
+  height:clamp(150px,20vh,196px);
+}
+.numbers__bar{display:none}
+/* hexágono vermelho (a "box") — degradê ESQUERDA(forte/escuro) -> DIREITA(claro/vivo) */
+.numbers__hex{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,#160304 0%,#5e0d0c 28%,#b51a1b 66%,#e62731 100%);
+  clip-path:polygon(20% 50%,24.2% 0%,75.8% 0%,80% 50%,75.8% 100%,24.2% 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+/* faixa branca: SÓ o contorno de cima (ida por cima, volta deslocada 3px) */
+.numbers__contour{
+  position:absolute;inset:0;z-index:2;background:#fff;pointer-events:none;
+  clip-path:polygon(
+    0% 50%,20% 50%,24.2% 0%,75.8% 0%,80% 50%,100% 50%,
+    100% calc(50% + 3px),80% calc(50% + 3px),75.8% calc(0% + 3px),24.2% calc(0% + 3px),20% calc(50% + 3px),0% calc(50% + 3px)
+  );
+}
+.numbers__grid{
+  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:center;gap:clamp(6px,1.4vw,22px);
+  width:54%;
+}
+.num{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;min-width:0;padding:0 clamp(4px,1vw,14px)}
+.num__v{
+  font-family:"Bebas Neue","Poppins",sans-serif;font-weight:400;font-style:italic;
+  font-size:clamp(30px,3.9vw,56px);line-height:1.08;letter-spacing:.5px;
+  display:inline-block;padding:0 .14em;overflow:visible;white-space:nowrap;
+  /* dígitos metálicos (cromados) */
+  background:linear-gradient(180deg,#fff 0%,#fff 42%,#b9bcc2 58%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.45));
+}
+/* bump ao incrementar (+1 a cada 10s) */
+.num--bump{animation:numBump .5s var(--ease-out)}
+@keyframes numBump{0%{transform:scale(1)}35%{transform:scale(1.2)}100%{transform:scale(1)}}
+.num__l{
+  margin-top:6px;font-style:italic;font-size:clamp(9px,.9vw,14px);font-weight:600;
+  letter-spacing:.5px;color:#fff;line-height:1.12;text-transform:uppercase;opacity:.95;
+}
+.num__sep{width:2px;align-self:stretch;margin:12px 0;border-radius:2px;
+  background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.7) 25%,rgba(255,255,255,.7) 75%,rgba(255,255,255,0))}
+
+/* =========================================================
+   ENTRADA — animações CSS puras (auto-rodam no load).
+   `backwards` mostra o estado inicial durante o delay; ao fim volta ao estado
+   natural (visível) — assim o :hover dos botões/CTA continua funcionando.
+   NÃO dependem de JS: se o JS falhar/atrasar, o hero aparece igual.
+   ========================================================= */
+@keyframes navIn{from{opacity:0;transform:translateY(-18px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes rollUp{from{transform:translateY(110%)}to{transform:translateY(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-130%)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(130%)}to{opacity:1;transform:translateX(0)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 8px 24px rgba(204,31,39,.35)}50%{box-shadow:0 8px 30px rgba(204,31,39,.7)}}
+
+/* logo + CTA: mesma animação (navIn); CTA ganha o pulso depois */
+.nav__logo{animation:navIn .8s var(--ease-out) .15s backwards}
+.nav__cta{animation:navIn .8s var(--ease-out) .15s backwards, ctaPulse 2.8s ease-in-out 1.9s infinite}
+/* menu: stagger */
+.nav__menu a{animation:fadeDown .6s var(--ease-out) backwards}
+.nav__menu a:nth-child(1){animation-delay:.20s}
+.nav__menu a:nth-child(2){animation-delay:.28s}
+.nav__menu a:nth-child(3){animation-delay:.36s}
+.nav__menu a:nth-child(4){animation-delay:.44s}
+.nav__menu a:nth-child(5){animation-delay:.52s}
+/* atletas: de fora da tela */
+.athlete--left{animation:slideInLeft 1.15s var(--ease-out) .3s backwards}
+.athlete--right{animation:slideInRight 1.15s var(--ease-out) .4s backwards}
+/* headline: rolagem (sobe de dentro da máscara) */
+.headline__line{animation:rollUp .9s var(--ease-out) .55s backwards}
+.headline__line--2{animation-delay:.72s}
+/* lead + botões + números */
+.hero__lead{animation:fadeUp .8s var(--ease-out) .95s backwards}
+.hbtn--primary{animation:fadeUp .7s var(--ease-out) 1.15s backwards}
+.hbtn--ghost{animation:fadeUp .7s var(--ease-out) 1.28s backwards}
+.numbers{animation:fadeUp .85s var(--ease-out) 1.4s backwards}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+/* atletas: encolhem e reduzem opacidade progressivamente */
+@media (max-width:1200px){ .athlete{opacity:.85!important} }
+@media (max-width:1040px){ .athlete{opacity:.6!important} }
+@media (max-width:900px){  .athlete{opacity:.5!important} }
+/* mobile: em vez de sumir, viram moldura lateral esmaecida atrás do texto */
+@media (max-width:780px){
+  .athlete{opacity:.5!important;visibility:visible}
+  .athlete--left{height:clamp(320px,52vh,480px);left:-6%}
+  .athlete--right{height:clamp(320px,52vh,480px);right:-6%}
+}
+@media (max-width:520px){
+  .athlete{opacity:.42!important}
+  .athlete--left{height:clamp(300px,46vh,430px);left:-12%}
+  .athlete--right{height:clamp(300px,46vh,430px);right:-12%}
+}
+/* botões do hero empilham cedo p/ não estourar em celulares */
+@media (max-width:600px){
+  .hero__btns{width:100%;gap:12px}
+  .hbtn{width:100%}
+}
+/* NAV vira menu hambúrguer */
+@media (max-width:900px){
+  .nav__toggle{display:flex}
+  .nav__cta--desktop{display:none}
+  .nav__menu{
+    position:absolute;top:100%;left:0;right:0;transform:none;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(14,6,8,.97);backdrop-filter:blur(6px);
+    padding:8px clamp(20px,5vw,40px) 22px;
+    max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+    transition:max-height .42s var(--ease-out),opacity .3s ease,visibility .3s;
+    box-shadow:0 24px 44px rgba(0,0,0,.55);border-top:2px solid var(--red);
+  }
+  .nav.is-open .nav__menu{max-height:470px;opacity:1;visibility:visible}
+  .nav__menu a{padding:15px 4px;font-size:18px;border-bottom:1px solid rgba(255,255,255,.08);opacity:1}
+  .nav__menu a::after{display:none}
+  .nav__cta--mobile{display:inline-flex;justify-content:center;margin-top:16px}
+  /* reseta a entrada animada dos itens dentro do dropdown */
+  body.is-ready .nav__menu a{transform:none;transition:color .25s ease}
+}
+/* tablet pequeno / celular grande */
+@media (max-width:680px){
+  .headline{font-size:clamp(38px,9vw,56px)}
+  .hero__lead{font-size:15px}
+  /* barra vira card 2x2 (sem o hexágono, que é horizontal) */
+  .numbers{display:block;height:auto;margin-top:0}
+  .numbers__gray{display:none}
+  .numbers__contour{display:none}
+  .numbers__hex{position:relative;inset:auto;clip-path:none;display:block;
+    width:92vw;margin:0 auto;border-radius:16px;border-top:3px solid #fff}
+  .numbers__grid{width:auto;flex-wrap:wrap;gap:22px 0;padding:24px 14px}
+  .num{flex:0 0 50%}
+  .num__sep{display:none}
+}
+/* celular pequeno */
+@media (max-width:430px){
+  .headline{font-size:clamp(32px,10.5vw,46px)}
+  .hero__content{padding-left:18px;padding-right:18px}
+  .hero__btns{width:100%;gap:12px}
+  .hbtn{width:100%}
+  .num__v{font-size:34px}
+}
+
+/* =========================================================
+   ACESSIBILIDADE — movimento reduzido
+   ========================================================= */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .nav__logo,.nav__cta,.nav__menu a,.athlete--left,.athlete--right,
+  .hero__lead,.hbtn,.numbers{opacity:1!important;transform:none!important}
+  .athlete--left{transform:none!important}.athlete--right{transform:none!important}
+  .numbers{transform:none!important}
+  .headline__line{transform:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
+/* =========================================================
+   SCROLL REVEAL (fade-in ao descer / fade-out ao subir)
+   Escondido só quando há JS (.js); sem JS o conteúdo aparece.
+   ========================================================= */
+.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .75s var(--ease-out)}
+.reveal.reveal--in{opacity:1;transform:none}
+
+/* =========================================================
+   SEÇÃO — NÃO SOMOS APENAS UMA ACADEMIA
+   ========================================================= */
+/* WRAPPER cinza único: gradiente contínuo (forte->claro) + UMA animação.
+   overflow:visible p/ o banner de números poder subir sobre o vermelho do hero. */
+.gray-wrap{
+  position:relative;overflow:visible;isolation:isolate;
+  padding-top:calc(clamp(150px,20vh,196px) * 0.5);  /* reserva o espaço da metade de baixo do banner */
+  background:linear-gradient(180deg,#272727 0%,#5e5e5e 42%,#8D8D8D 62%,#8D8D8D 100%);
+}
+.gray-wrap__shine{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.05) 47%,rgba(255,255,255,.11) 50%,rgba(255,255,255,.05) 53%,transparent 66%);
+  background-size:260% 100%;animation:aboutShine 11s ease-in-out infinite;
+}
+.about{
+  position:relative;z-index:1;overflow:hidden;
+  background:transparent;
+  padding:clamp(60px,9vh,120px) clamp(20px,5vw,70px) clamp(50px,7vh,90px);
+}
+/* reflexo/brilho fluido (efeito espelho) */
+.about__shine{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.06) 47%,rgba(255,255,255,.12) 50%,rgba(255,255,255,.06) 53%,transparent 68%);
+  background-size:260% 100%;
+  animation:aboutShine 9s ease-in-out infinite;
+}
+@keyframes aboutShine{0%{background-position:135% 0}100%{background-position:-35% 0}}
+/* marca d'água "ajuste" gigante (como no PDF) */
+.about__mark{
+  position:absolute;right:0;bottom:-4%;z-index:0;
+  font-family:"Bebas Neue",sans-serif;font-style:italic;
+  font-size:min(46vw,620px);line-height:.78;color:rgba(255,255,255,.05);
+  letter-spacing:-.02em;white-space:nowrap;pointer-events:none;user-select:none;
+  transform:translateX(20%);
+}
+.about__head{position:relative;z-index:2;text-align:center;max-width:920px;margin:0 auto clamp(34px,5vh,60px)}
+.badge{
+  display:inline-block;background:var(--red);color:#fff;font-weight:600;
+  font-size:clamp(12px,1.1vw,15px);padding:9px 24px;border-radius:30px;
+  box-shadow:0 6px 18px rgba(204,31,39,.4);
+  animation:badgePulse 2.6s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{box-shadow:0 6px 18px rgba(204,31,39,.32)}50%{box-shadow:0 8px 28px rgba(204,31,39,.78)}}
+.about__title{font-family:"Bebas Neue",sans-serif;font-size:clamp(34px,5.2vw,70px);color:#fff;margin-top:20px;line-height:1;letter-spacing:.5px}
+.about__sub{font-size:clamp(15px,1.45vw,20px);color:#cdc8c8;margin-top:14px;line-height:1.5}
+
+.about__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(20px,3vw,44px);max-width:1120px;margin:0 auto;align-items:stretch}
+
+/* box: layout fixo (imagem + título + texto + botão); troca conteúdo no hover dos diferenciais */
+.fbox{position:relative;border-radius:20px;overflow:hidden;min-height:clamp(320px,44vh,440px);box-shadow:0 22px 50px rgba(0,0,0,.55)}
+.fbox__media{position:absolute;inset:0;z-index:0}
+.fbox__media img{width:100%;height:100%;object-fit:cover;transition:opacity .22s ease}
+.fbox::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,5,6,0) 26%,rgba(10,5,6,.5) 56%,rgba(10,5,6,.95) 100%)}
+.fbox__body{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(22px,2.6vw,38px);transition:opacity .22s ease}
+.fbox__title{font-family:"Bebas Neue",sans-serif;font-size:clamp(26px,2.9vw,42px);color:#fff;line-height:1}
+.fbox__text{color:#e2dddd;font-size:clamp(13px,1.15vw,16px);margin:12px 0 20px;max-width:420px;line-height:1.5}
+/* fade rápido na troca de conteúdo */
+.fbox.is-swapping .fbox__media img,.fbox.is-swapping .fbox__body{opacity:0}
+
+/* botão vermelho (com brilho que cruza no hover) */
+.btn-red{position:relative;overflow:hidden;display:inline-block;background:var(--red);color:#fff;font-weight:600;font-size:14px;letter-spacing:.4px;padding:13px 28px;border-radius:8px;box-shadow:0 8px 22px rgba(204,31,39,.4);transition:transform .25s var(--ease-out),box-shadow .25s ease,background .25s ease}
+.btn-red:hover{transform:translateY(-2px) scale(1.04);background:var(--red-bright);box-shadow:0 13px 30px rgba(204,31,39,.6)}
+.btn-red::before{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .6s ease}
+.btn-red:hover::before{left:160%}
+
+/* botões diferenciais (direita) — controlam a box; hover: vermelho + texto branco */
+.diffs{display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px);justify-content:center}
+.diff{display:flex;align-items:center;gap:14px;text-align:left;
+  border:0;cursor:pointer;border-radius:40px;background:rgba(255,255,255,.09);
+  height:clamp(58px,7.4vh,76px);padding:0 clamp(16px,1.7vw,24px);
+  transition:background .3s ease,transform .3s var(--ease-out),box-shadow .3s ease}
+.diff:hover{background:var(--red);transform:translateX(8px);box-shadow:0 12px 26px rgba(204,31,39,.45)}
+.diff__icon{width:38px;height:38px;flex:0 0 38px;display:block;border-radius:50%}
+.diff__label{font-family:"Bebas Neue",sans-serif;font-size:clamp(16px,1.5vw,22px);letter-spacing:.5px;color:#efeaea;transition:color .3s ease}
+.diff:hover .diff__label{color:#fff}
+
+/* =========================================================
+   SEÇÃO — ESCOLHA SEU JEITO DE EVOLUIR
+   Passa por 3 fundos: cinza (#272727->#8D8D8D) -> foto c/ gradiente -> preto
+   ========================================================= */
+.modal{
+  position:relative;z-index:1;overflow:hidden;isolation:isolate;
+  padding:clamp(70px,12vh,150px) clamp(16px,4vw,50px) clamp(90px,15vh,190px);
+  background:transparent;            /* o cinza vem do .gray-wrap (contínuo) */
+}
+/* imagem (até 3/4) + preto (1/4) por cima do cinza do wrapper, mascarado p/ não
+   cobrir a zona cinza. Termina em PRETO sólido (#0a0506) = mesma cor do corpo e
+   da seção de unidades logo abaixo -> sem costura de cor. */
+.modal__bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(10,5,6,0) 55%,#0a0506 80%,#0a0506 100%),
+    url("assets/gym-bg.png") center 60%/cover no-repeat;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,transparent 42%,#000 52%,#000 100%);
+          mask:linear-gradient(180deg,transparent 0%,transparent 42%,#000 52%,#000 100%);
+}
+/* painel vermelho (flutua sobre os 3 fundos) */
+.modal__panel{
+  position:relative;z-index:1;max-width:1120px;margin:0 auto;
+  background:linear-gradient(180deg,#cc1f27 0%,#9d141b 100%);
+  border-radius:30px;
+  padding:clamp(34px,4.5vw,60px) clamp(20px,3.5vw,54px) clamp(40px,5vw,62px);
+  box-shadow:0 34px 80px rgba(0,0,0,.55);
+}
+.modal__head{text-align:center;max-width:820px;margin:0 auto clamp(26px,3.5vh,44px)}
+.modal__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(30px,4.2vw,56px);color:#fff;line-height:1;letter-spacing:.5px}
+.modal__sub{color:rgba(255,255,255,.92);font-size:clamp(14px,1.3vw,18px);margin-top:8px}
+.modal__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,24px)}
+/* cards retrato = imagem COMPLETA (foto 355x473 ~ 3/4) */
+.mcard{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.35);transition:transform .35s var(--ease-out),box-shadow .35s ease}
+.mcard img{width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease-out)}
+.mcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.8) 100%)}
+.mcard__name{position:absolute;z-index:2;left:16px;bottom:14px;font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(20px,2vw,30px);color:#fff;letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+/* hover: bloco sobe + sombra vermelho escuro */
+.mcard:hover{transform:translateY(-12px);box-shadow:0 26px 48px rgba(74,4,7,.8)}
+.mcard:hover img{transform:scale(1.07)}
+.modal__cta{text-align:center;margin-top:clamp(28px,3.5vh,46px)}
+.btn-pill{display:inline-block;background:#fff;color:var(--red);font-weight:700;font-size:15px;letter-spacing:.4px;padding:15px 42px;border-radius:40px;box-shadow:0 10px 26px rgba(0,0,0,.32);transition:transform .25s var(--ease-out),box-shadow .25s ease}
+.btn-pill:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 16px 34px rgba(0,0,0,.45)}
+
+/* =========================================================
+   WRAPPER ESCURO ÚNICO (unidades + storytelling)
+   UM fundo preto (#0a0506, mesma cor do final do .modal -> sem costura) com UM
+   fundo animado contínuo (blobs + brilho, mesmos keyframes do hero = sincronizado).
+   Máscara de FADE no topo p/ a animação entrar suave a partir do preto do modal.
+   ========================================================= */
+.dark-wrap{position:relative;overflow:hidden;isolation:isolate;background:var(--ink)}
+.dark-wrap__fx{
+  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 10%,#000 100%);
+          mask:linear-gradient(180deg,transparent 0,#000 10%,#000 100%);
+}
+/* bem discreto no preto (suave, no mesmo tom do resto do site) */
+.dark-wrap .fx-blob{opacity:.14;filter:blur(90px)}
+.dark-wrap .fx-blob--1{top:4%}
+.dark-wrap .fx-blob--2{top:36%}
+.dark-wrap .fx-blob--3{top:68%;bottom:auto}
+.dark-wrap .fx-sheen{opacity:.5}
+
+/* =========================================================
+   SEÇÃO — LOCALIZAÇÃO DAS UNIDADES (fundo vem do .dark-wrap)
+   ========================================================= */
+.location{
+  position:relative;z-index:1;overflow:hidden;
+  background:transparent;
+  padding:clamp(60px,9vh,120px) clamp(20px,5vw,70px) clamp(80px,13vh,160px);
+}
+/* marca d'água "Unidades" gigante (como no PDF) */
+.location__mark{
+  position:absolute;left:-1.5%;top:1%;z-index:0;
+  font-family:"Bebas Neue",sans-serif;font-style:italic;
+  font-size:min(36vw,460px);line-height:.8;color:rgba(255,255,255,.045);
+  letter-spacing:-.02em;white-space:nowrap;pointer-events:none;user-select:none;
+}
+.location__inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+.location__head{margin-bottom:clamp(28px,4.5vh,52px)}
+.location__title{font-family:"Bebas Neue",sans-serif;font-size:clamp(34px,5vw,68px);line-height:1;color:#fff;letter-spacing:.5px}
+.location__sub{margin-top:14px;font-size:clamp(15px,1.4vw,19px);color:#c9c4c4;max-width:520px;line-height:1.5}
+
+.location__grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(20px,3vw,46px);align-items:stretch}
+
+/* botões de unidade — MESMA animação dos .diff (fundo->vermelho + translateX + sombra).
+   .is-active = unidade selecionada (mantém o estado vermelho). */
+.units{display:flex;flex-direction:column;gap:clamp(12px,1.6vh,18px);justify-content:center}
+.unit{
+  display:flex;flex-direction:column;gap:6px;text-align:left;
+  border:0;cursor:pointer;border-radius:22px;background:rgba(255,255,255,.07);
+  padding:clamp(14px,1.7vw,20px) clamp(18px,1.9vw,26px);
+  transition:background .3s ease,transform .3s var(--ease-out),box-shadow .3s ease;
+}
+.unit:hover,.unit.is-active{background:var(--red);transform:translateX(8px);box-shadow:0 12px 26px rgba(204,31,39,.45)}
+.unit__city{font-family:"Bebas Neue",sans-serif;font-size:clamp(20px,2vw,28px);letter-spacing:.5px;color:#fff;line-height:1}
+.unit__addr{font-size:clamp(12px,1.05vw,14px);line-height:1.4;color:#cfcaca;transition:color .3s ease}
+.unit:hover .unit__addr,.unit.is-active .unit__addr{color:#fff}
+
+/* caixa grande do mapa (ao lado dos botões) */
+.locmap{
+  position:relative;border-radius:24px;overflow:hidden;
+  min-height:clamp(360px,56vh,560px);
+  background:#4a4a4a;                 /* cinza de fallback enquanto o mapa carrega */
+  box-shadow:0 26px 60px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.08);
+}
+.locmap__frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+/* etiqueta discreta dizendo qual unidade está no mapa (canto superior direito) */
+.locmap__chip{
+  position:absolute;z-index:2;right:16px;top:16px;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(10,5,6,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:#fff;font-weight:600;font-size:13px;letter-spacing:.3px;
+  padding:8px 15px;border-radius:30px;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 6px 18px rgba(0,0,0,.4);pointer-events:none;
+}
+.locmap__chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(204,31,39,.3)}
+
+/* =========================================================
+   SEÇÃO — STORYTELLING (bloco de texto, efeito máquina de escrever)
+   Fundo vem do .dark-wrap (preto animado contínuo).
+   ========================================================= */
+.story{
+  position:relative;z-index:1;overflow:hidden;background:transparent;
+  padding:clamp(40px,7vh,96px) clamp(20px,5vw,70px) clamp(80px,12vh,160px);
+}
+/* CENTRALIZADO. A digitação revela caractere a caractere (esq->dir) sobre o
+   layout já reservado, então não há reflow nem "pulo" mesmo centralizado. */
+.story__inner{position:relative;z-index:2;max-width:880px;margin:0 auto;text-align:center}
+.story__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(30px,4.7vw,62px);line-height:1.02;color:#fff;letter-spacing:.5px}
+.story__lead{margin-top:14px;font-size:clamp(14px,1.3vw,18px);color:#cfcaca}
+.story__head{font-family:"Bebas Neue",sans-serif;font-size:clamp(28px,4.4vw,56px);line-height:1.04;color:#fff;letter-spacing:.5px;margin-top:clamp(34px,5vh,64px)}
+.story__p{margin:18px auto 0;max-width:760px;font-size:clamp(14px,1.2vw,17px);line-height:1.7;color:#d7d2d2}
+.story__tag{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(26px,4vw,52px);line-height:1.06;color:#fff;letter-spacing:.5px;margin-top:clamp(36px,5.5vh,68px)}
+.story__cta{margin-top:clamp(28px,4vh,48px)}
+/* o botão do fim entra junto com o storytelling (não na carga da página) */
+.story .hbtn{animation:none}
+
+/* trechos vermelhos: destaque sutil no hover (brilho leve). inline (não
+   inline-block) p/ não virar bloco "inquebrável" e estourar a largura no mobile. */
+.hl{
+  color:var(--red);
+  transition:color .3s ease,text-shadow .3s ease;
+}
+.hl:hover{
+  color:var(--red-bright);
+  text-shadow:0 0 18px rgba(204,31,39,.6),0 2px 10px rgba(204,31,39,.45);
+}
+
+/* caracteres revelados estilo "escrevendo num docs": cada um ocupa seu espaço
+   (layout final fixo/centralizado já reservado), começa oculto e é revelado um a
+   um da esquerda p/ a direita -> sem reflow, sem cursor. */
+.tw-c{visibility:hidden}
+.tw-c.on{visibility:visible}
+
+/* estado inicial só com JS: texto escondido até ser "digitado"; botão entra no fim.
+   Sem JS (ou sem suporte), tudo aparece normal. */
+.js .story [data-tw]{visibility:hidden}
+.js .story__cta{opacity:0;transform:translateY(12px)}
+.story__cta.is-in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s var(--ease-out)}
+@media (prefers-reduced-motion:reduce){
+  .js .story [data-tw]{visibility:visible}
+  .js .story__cta{opacity:1;transform:none}
+  .tw-caret{display:none}
+}
+
+/* =========================================================
+   SEÇÃO — DEPOIMENTOS (branca, corte diagonal preto/branco)
+   ========================================================= */
+.tt{
+  --cy:clamp(120px,18vw,280px);             /* o quanto a diagonal desce nas bordas */
+  position:relative;overflow:hidden;isolation:isolate;
+  background:#ffffff;color:#181312;
+  /* sobe o conteúdo (menos respiro no topo), mantendo folga p/ não cortar no diagonal */
+  padding:calc(var(--cy) * 0.66 + clamp(10px,1.6vh,24px)) clamp(20px,5vw,70px) clamp(60px,9vh,110px);
+  /* topo reto no meio + diagonais descendo nas laterais (revela o preto atrás) */
+  clip-path:polygon(22% 0, 78% 0, 100% var(--cy), 100% 100%, 0 100%, 0 var(--cy));
+}
+/* fundo branco animado (bem sutil) — mesmo espírito das outras seções */
+.tt__fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.tt__sheen{position:absolute;inset:0;background:linear-gradient(115deg,transparent 42%,rgba(0,0,0,.028) 50%,transparent 58%);background-size:260% 100%;animation:aboutShine 13s ease-in-out infinite}
+.tt__blob{position:absolute;border-radius:50%;filter:blur(80px)}
+.tt__blob--1{width:42vw;height:42vw;left:-10vw;top:14%;background:radial-gradient(circle,rgba(204,31,39,.10),transparent 70%);animation:drift1 30s ease-in-out infinite alternate}
+.tt__blob--2{width:36vw;height:36vw;right:-8vw;bottom:-4%;background:radial-gradient(circle,rgba(204,31,39,.07),transparent 70%);animation:drift2 36s ease-in-out infinite alternate}
+
+.tt__inner{position:relative;z-index:1;max-width:1180px;margin:0 auto}
+.tt__head{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vh,48px)}
+.tt__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(34px,5vw,66px);line-height:.98;color:#181312;margin-top:16px;letter-spacing:.5px}
+.tt__sub{margin-top:14px;max-width:560px;font-size:clamp(13px,1.15vw,16px);line-height:1.6;color:#5a5252}
+/* fotinhas sobrepostas ao lado do título */
+.tt__faces{display:flex;flex:0 0 auto}
+.tt__faces img{width:clamp(54px,5vw,80px);height:clamp(54px,5vw,80px);border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.2);background:#ddd}
+.tt__faces img+img{margin-left:-18px}
+
+/* cards de avaliação (estilo Google) */
+.tt__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,26px)}
+.review{
+  background:#fff;border:1px solid #ecebeb;border-radius:16px;
+  padding:clamp(16px,1.6vw,22px);box-shadow:0 10px 30px rgba(0,0,0,.07);
+  transition:transform .3s var(--ease-out),box-shadow .3s ease;
+}
+.review:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.13)}
+.review__top{display:flex;align-items:center;gap:12px}
+.review__ava{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;background:#ddd}
+.review__id{display:flex;flex-direction:column;min-width:0;margin-right:auto}
+.review__name{font-weight:600;font-size:15px;color:#1c1717;line-height:1.2}
+.review__meta{font-size:12px;color:#8a8585}
+.review__g{flex:0 0 20px;line-height:0}
+.gicon{width:20px;height:20px;display:block}
+.review__stars{display:flex;align-items:center;gap:8px;margin:12px 0 8px;color:#fbbc04;font-size:15px;letter-spacing:1px}
+.review__when{color:#8a8585;font-size:12px;letter-spacing:normal}
+.review__text{font-size:13.5px;line-height:1.6;color:#403a3a}
+.review__actions{display:flex;gap:6px;margin-top:16px;border-top:1px solid #f0eeee;padding-top:10px}
+.review__btn{display:inline-flex;align-items:center;gap:7px;background:transparent;border:0;cursor:pointer;color:#5b6470;font-size:13px;font-weight:500;padding:7px 12px;border-radius:30px;transition:background .2s ease,color .2s ease}
+.review__btn svg{width:16px;height:16px}
+.review__btn:hover{background:#f3f4f6;color:var(--red)}
+/* stagger das avaliações no reveal */
+.tt__grid .review:nth-child(1){transition-delay:.04s}
+.tt__grid .review:nth-child(2){transition-delay:.12s}
+.tt__grid .review:nth-child(3){transition-delay:.20s}
+.tt__grid .review:nth-child(4){transition-delay:.10s}
+.tt__grid .review:nth-child(5){transition-delay:.18s}
+.tt__grid .review:nth-child(6){transition-delay:.26s}
+
+/* =========================================================
+   SEÇÃO — BLOG (vermelha, animada)
+   ========================================================= */
+.blog{
+  position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  background:linear-gradient(180deg,#cc1f27 0%,#9d141b 100%);
+  padding:clamp(60px,10vh,130px) clamp(20px,5vw,70px) clamp(80px,13vh,170px);
+}
+.blog__fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blog .fx-blob{opacity:.4}
+.blog__mark{
+  position:absolute;left:-1%;bottom:-3%;z-index:0;
+  font-family:"Bebas Neue",sans-serif;font-style:italic;
+  font-size:min(30vw,420px);line-height:.8;color:rgba(255,255,255,.10);
+  white-space:nowrap;pointer-events:none;user-select:none;
+}
+.blog__inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+.blog__head{text-align:center;max-width:780px;margin:0 auto clamp(32px,5vh,56px)}
+.blog__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(40px,6.2vw,86px);line-height:1;letter-spacing:.5px}
+.blog__sub{margin-top:10px;font-size:clamp(13px,1.2vw,16px);line-height:1.6;color:rgba(255,255,255,.92)}
+.blog__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.post{background:#f4f4f4;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.28);transition:transform .35s var(--ease-out),box-shadow .35s ease}
+.post:hover{transform:translateY(-10px);box-shadow:0 28px 56px rgba(0,0,0,.42)}
+.post__media{display:block;aspect-ratio:16/11;overflow:hidden;background:#cfcfcf}
+.post__media img{width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease-out)}
+.post:hover .post__media img{transform:scale(1.07)}
+.post__body{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:clamp(16px,1.6vw,22px)}
+.post__title{color:var(--red);font-weight:700;font-size:clamp(15px,1.3vw,18px);line-height:1.25}
+.post__go{flex:0 0 auto;width:40px;height:40px;border-radius:11px;border:1.5px solid var(--red);color:var(--red);display:grid;place-items:center;font-size:20px;line-height:1;transition:background .25s ease,color .25s ease,transform .25s ease}
+.post:hover .post__go{background:var(--red);color:#fff;transform:translateX(2px)}
+.blog__grid .post:nth-child(2){transition-delay:.10s}
+.blog__grid .post:nth-child(3){transition-delay:.20s}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+/* footer rico (base do PDF): 3 colunas + barra inferior */
+.foot{position:relative;background:#2a2a2a;color:#cfc9c9;padding:clamp(44px,7vh,80px) clamp(20px,5vw,70px) 0}
+.foot__top{
+  max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,4vw,60px);
+  padding-bottom:clamp(32px,5vh,54px);
+}
+.foot__brand{max-width:390px}
+.foot__logo{height:46px;width:auto;display:block;margin-bottom:18px}
+.foot__desc{font-size:13.5px;line-height:1.65;color:#a39e9e}
+.foot__social{display:flex;gap:12px;margin-top:22px}
+.foot__social a{
+  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);
+  display:grid;place-items:center;color:#cfc9c9;
+  transition:background .25s ease,color .25s ease,transform .25s var(--ease-out);
+}
+.foot__social a:hover{background:var(--red);color:#fff;transform:translateY(-3px)}
+.foot__social svg{width:18px;height:18px;display:block}
+.foot__h{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(20px,2vw,26px);color:#fff;letter-spacing:.5px;margin-bottom:16px}
+.foot__col{display:flex;flex-direction:column;gap:11px}
+.foot__col a{color:#b9b3b4;font-size:14px;text-transform:uppercase;letter-spacing:.5px;width:fit-content;transition:color .25s ease,transform .25s var(--ease-out)}
+.foot__col a:hover{color:var(--red);transform:translateX(4px)}
+.foot__contact{font-size:12.5px;color:#b9b3b4;line-height:1.6;text-transform:uppercase;letter-spacing:.4px}
+.foot__contact strong{color:#fff;font-weight:700}
+.foot__contact+.foot__contact{margin-top:10px}
+.foot__bar{
+  max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,.1);
+  padding:18px 0 26px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.foot__copy{font-size:12.5px;color:#8a8585;letter-spacing:.3px}
+.foot__credits{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.foot__dev{color:#8a8585;letter-spacing:.3px;transition:color .25s ease}
+.foot__dev:hover{color:var(--red)}
+.foot__sep{color:#555}
+@media (max-width:760px){
+  .foot__top{grid-template-columns:1fr;gap:30px}
+  .foot__bar{flex-direction:column;text-align:center}
+}
+
+/* =========================================================
+   RESPONSIVO — seções novas
+   ========================================================= */
+@media (max-width:860px){
+  .about__grid{grid-template-columns:1fr}
+  .modal__grid{grid-template-columns:repeat(2,1fr)}
+  .about__mark{font-size:min(64vw,440px)}
+  .location__grid{grid-template-columns:1fr}
+  .locmap{min-height:clamp(300px,48vh,420px);order:2}
+  .tt__head{flex-direction:column;align-items:flex-start}
+  .tt__grid{grid-template-columns:repeat(2,1fr)}
+  .blog__grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .modal__grid{grid-template-columns:1fr 1fr;gap:12px}
+  .mcard__name{font-size:18px;left:12px}
+  .tt__grid{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   PÁGINA "A AJUSTE" — seção intro (fundo vermelho animado)
+   Mesmo espírito do hero: blobs vermelhos + brilho diagonal.
+   Cada bloco de texto entra com .reveal; os dois títulos grandes
+   sobem de dentro de máscaras (mesma "rolagem" do headline da home).
+   ========================================================= */
+.ahero{
+  position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  /* espaço pro nav fixo no topo */
+  padding:calc(72px + clamp(40px,7vh,90px)) clamp(20px,5vw,70px) clamp(90px,14vh,180px);
+  /* vermelho "fechado": começa no mais ESCURO (topo) e vai p/ o mais CLARO (base),
+     mesma lógica de degradê da home (numbers-hex / cinza forte→claro) */
+  background:linear-gradient(180deg,#3d0708 0%,#6e0f12 30%,#9a161c 62%,#c11d25 100%);
+}
+/* fundo com movimento fluido (reaproveita .fx-blob / .fx-sheen globais) */
+.ahero__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+.ahero .fx-blob{opacity:.4}
+/* leve escurecida nas bordas p/ leitura */
+.ahero::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 30%,transparent 45%,rgba(30,2,3,.38) 100%);
+}
+.ahero__inner{position:relative;z-index:2;max-width:980px;margin:0 auto;text-align:center}
+
+/* eyebrow / migalha de pão */
+.ahero__eyebrow{
+  font-size:clamp(12px,1.15vw,15px);font-weight:500;letter-spacing:.3px;
+  color:rgba(255,255,255,.85);margin-bottom:clamp(20px,4vh,40px);line-height:1.5;
+}
+.ahero__eyebrow b{font-weight:700;color:#fff}
+.ahero__eyebrow span{margin:0 8px;opacity:.6}
+
+/* títulos grandes (Bebas itálico) com rolagem por máscara */
+.ahero__title,.ahero__big{
+  font-family:"Bebas Neue","Poppins",sans-serif;font-weight:400;font-style:italic;
+  text-transform:uppercase;letter-spacing:1px;line-height:.94;
+  text-shadow:0 4px 24px rgba(0,0,0,.3);
+}
+.ahero__title{font-size:clamp(40px,6.6vw,86px)}
+.ahero__big{font-size:clamp(30px,4.4vw,58px);margin-top:clamp(36px,6vh,72px)}
+/* máscara única por título: o texto pode quebrar em N linhas (wrap-safe no mobile)
+   e mesmo assim sobe inteiro de dentro da máscara (mesma "rolagem" do hero). */
+.ahero__mask{display:block;overflow:hidden;padding:.06em 0}
+.ahero__roll{display:block;transform:translateY(115%);transition:transform .9s var(--ease-out)}
+.reveal--in .ahero__roll{transform:translateY(0)}
+/* o efeito é a rolagem; não escondemos o título via opacity do .reveal global */
+.js .ahero__title.reveal,.js .ahero__big.reveal{opacity:1;transform:none}
+
+/* parágrafos */
+.ahero__lead{
+  margin:clamp(20px,3.5vh,34px) auto 0;max-width:720px;
+  font-size:clamp(15px,1.35vw,19px);line-height:1.65;color:#fff;
+}
+.ahero__mid{
+  margin:clamp(28px,4.5vh,46px) auto 0;max-width:780px;
+  font-size:clamp(15px,1.35vw,19px);line-height:1.65;color:#fff;font-weight:500;
+}
+
+/* foto dos fundadores */
+.ahero__photo{
+  margin:clamp(30px,5vh,56px) auto 0;max-width:880px;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 26px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.16);
+  transition:transform .4s var(--ease-out),box-shadow .4s ease;
+}
+.ahero__photo img{width:100%;height:auto;display:block;aspect-ratio:1092/431;object-fit:cover;transition:transform .6s var(--ease-out)}
+/* hover: a foto dá um leve zoom + o quadro sobe (mesmo espírito dos cards da home) */
+.ahero__photo:hover{transform:translateY(-6px);box-shadow:0 36px 72px rgba(0,0,0,.55)}
+.ahero__photo:hover img{transform:scale(1.06)}
+
+/* duas caixas escuras (com canto inferior cortado, como na arte) */
+.ahero__boxes{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px);
+  max-width:880px;margin:clamp(20px,3vh,30px) auto 0;text-align:left;
+}
+.abox{
+  background:#262626;color:#e7e3e3;
+  padding:clamp(20px,2.4vw,32px);border-radius:14px;
+  font-size:clamp(13px,1.15vw,16px);line-height:1.6;
+  box-shadow:0 18px 40px rgba(0,0,0,.4);
+  /* canto inferior direito chanfrado (igual à arte Rectangle 1329133873) */
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%);
+  transition:transform .35s var(--ease-out),box-shadow .35s ease,background .35s ease;
+}
+/* hover: mesma linha de pensamento da foto — sobe + sombra mais forte + leve clareada */
+.abox:hover{transform:translateY(-6px);background:#2f2f2f;box-shadow:0 28px 54px rgba(0,0,0,.5)}
+
+/* CTA */
+.ahero__cta{margin-top:clamp(34px,5.5vh,60px)}
+
+/* tab/encaixe escuro apontando p/ a próxima seção (igual à arte) */
+.ahero__notch{
+  position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);z-index:2;
+  width:min(46%,420px);height:clamp(34px,5vh,56px);
+  background:#333;            /* = topo do .agray (transição vermelho→cinza) */
+  clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
+}
+
+@media (max-width:680px){
+  .ahero__boxes{grid-template-columns:1fr}
+  .ahero__notch{width:72%}
+  .ahero{padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)}
+}
+
+/* =========================================================
+   A AJUSTE — wrapper CINZA animado (movimento + diferença)
+   Fundo #2F2F2F (do PDF) + brilho/blobs sutis em movimento.
+   ========================================================= */
+.agray{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:linear-gradient(180deg,#333 0%,#2b2b2b 50%,#2f2f2f 100%);
+}
+/* brilho diagonal que cruza lentamente (mesma ideia do cinza da home) */
+.agray__shine{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.05) 47%,rgba(255,255,255,.10) 50%,rgba(255,255,255,.05) 53%,transparent 66%);
+  background-size:260% 100%;animation:aboutShine 12s ease-in-out infinite;
+}
+/* blobs claros/escuros suaves derivando (movimento de fundo) */
+.agray__fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.agray__fx .fx-blob{opacity:.10;mix-blend-mode:normal;filter:blur(90px)}
+.agray__fx .fx-blob--1{background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%)}
+.agray__fx .fx-blob--2{background:radial-gradient(circle,rgba(0,0,0,.6),transparent 70%)}
+.agray__fx .fx-blob--3{background:radial-gradient(circle,rgba(255,255,255,.45),transparent 70%)}
+
+/* marca d'água "ajuste" vertical na direita = IMAGEM do PDF (branca, transparente) */
+.aw-mark{
+  position:absolute;right:-1.5%;top:32%;z-index:0;
+  height:clamp(560px,64vw,1120px);width:auto;
+  opacity:.07;pointer-events:none;user-select:none;
+}
+
+/* ---- NOSSO MOVIMENTO ---- */
+.amove{position:relative;z-index:1;padding:clamp(50px,8vh,110px) clamp(20px,5vw,70px) clamp(30px,5vh,60px)}
+.amove__inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;text-align:center}
+.amove__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(32px,5vw,64px);color:#fff;line-height:1;letter-spacing:.5px;margin-top:18px}
+.amove__p{margin:clamp(14px,2vh,20px) auto 0;max-width:760px;font-size:clamp(14px,1.25vw,18px);line-height:1.65;color:#e2dede}
+.amove__title2{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(28px,4.4vw,56px);color:#fff;line-height:1.02;letter-spacing:.5px;margin-top:clamp(36px,6vh,72px)}
+
+/* aviso de seção interativa */
+.switches__hint{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:clamp(20px,3vh,30px)}
+.switches__chip{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  color:#fff;font-weight:600;font-size:13px;letter-spacing:.4px;padding:8px 18px;border-radius:30px;
+}
+.switches__tip{font-size:clamp(12px,1.1vw,14px);color:#bdb8b8}
+
+/* ---- grade de interruptores ---- */
+.switches{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,18px);
+  max-width:1040px;margin:clamp(20px,3vh,32px) auto 0;
+  background:linear-gradient(180deg,#242424 0%,#191919 100%);
+  border-radius:26px;padding:clamp(18px,2.4vw,32px);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+}
+/* card: botão CENTRALIZADO no topo + texto (oculto) centralizado abaixo */
+.sw{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;padding:clamp(16px,1.6vw,22px);
+  transition:background .35s ease,border-color .35s ease,transform .3s var(--ease-out);
+}
+.sw:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}
+.sw.is-on{background:rgba(36,190,80,.12);border-color:rgba(36,190,80,.34)}
+
+/* interruptor (off = vermelho / on = verde) */
+.toggle{
+  position:relative;flex:0 0 auto;width:62px;height:30px;border:0;cursor:pointer;padding:0;border-radius:30px;
+  background:linear-gradient(180deg,#e22730,#a3171d);          /* OFF = vermelho */
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.45),0 4px 12px rgba(204,31,39,.4);
+  transition:background .35s ease,box-shadow .35s ease,transform .25s var(--ease-out);
+}
+.toggle__knob{
+  position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(180deg,#ffffff,#d6d6d6);
+  box-shadow:0 2px 5px rgba(0,0,0,.5);
+  transition:left .35s var(--ease-out);
+}
+/* hover do interruptor */
+.toggle:hover{transform:scale(1.08);box-shadow:inset 0 2px 6px rgba(0,0,0,.45),0 7px 18px rgba(204,31,39,.65)}
+.toggle:active{transform:scale(.96)}
+.toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* ON = verde + botão desliza p/ a direita */
+.sw.is-on .toggle{background:linear-gradient(180deg,#2ecf5b,#159b3d);box-shadow:inset 0 2px 6px rgba(0,0,0,.35),0 4px 14px rgba(34,180,70,.55)}
+.sw.is-on .toggle:hover{box-shadow:inset 0 2px 6px rgba(0,0,0,.35),0 7px 20px rgba(34,180,70,.75)}
+.sw.is-on .toggle__knob{left:35px}
+
+/* texto: oculto por padrão; aparece verdinho ao ligar */
+.sw__text{
+  margin-top:0;max-height:0;opacity:0;transform:translateY(-6px);overflow:hidden;
+  font-size:clamp(13px,1.05vw,15px);line-height:1.5;color:#8fe6a8;
+  transition:opacity .4s ease,max-height .5s var(--ease-out),transform .4s var(--ease-out),margin-top .4s ease;
+}
+.sw.is-on .sw__text{opacity:1;max-height:200px;transform:none;margin-top:14px}
+
+/* ---- NOSSA DIFERENÇA (layout do PDF: card vermelho + card cinza) ---- */
+.adiff{position:relative;z-index:1;padding:clamp(36px,6vh,80px) clamp(20px,5vw,70px) clamp(60px,10vh,130px)}
+/* STAGE com sobreposição (base do PDF): vermelho na FRENTE (z2),
+   cinza ATRÁS à direita (z1), tuck/overlap entre eles. */
+.adiff__cards{position:relative;max-width:1040px;margin:0 auto}
+/* card vermelho (ATRÁS, maior) — gradiente do exemplo do usuário.
+   padding-right MAIOR p/ o texto não ficar embaixo do bloco de fotos (espacinho). */
+.card-vermelho{
+  position:relative;z-index:1;width:58%;
+  background:linear-gradient(135deg,#c52822 0%,#9d1814 45%,#5a0f0c 100%);
+  border-radius:26px;padding:clamp(24px,3vw,46px);padding-right:clamp(40px,5vw,76px);
+  box-shadow:0 34px 80px rgba(0,0,0,.55);
+}
+.badge--light{background:rgba(255,255,255,.16);box-shadow:none;animation:none}
+.adiff__head{margin-bottom:clamp(22px,3.2vh,38px)}
+.adiff__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(28px,3.8vw,50px);color:#fff;line-height:1;letter-spacing:.5px;margin-top:14px}
+
+.checks{list-style:none;display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px)}
+/* opções com animação no hover (desliza + ícone "salta" + realce) */
+.check{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:10px;border-radius:12px;cursor:default;
+  transition:transform .3s var(--ease-out),background .3s ease;
+}
+.check:hover{transform:translateX(7px);background:rgba(255,255,255,.10)}
+.check__ico{
+  flex:0 0 30px;width:30px;height:30px;border-radius:8px;
+  background:#fff;color:var(--red);display:grid;place-items:center;margin-top:2px;
+  box-shadow:0 4px 12px rgba(0,0,0,.22);
+  transition:transform .35s var(--ease-out),box-shadow .3s ease;
+}
+.check:hover .check__ico{transform:scale(1.14) rotate(-6deg);box-shadow:0 7px 18px rgba(0,0,0,.34)}
+.check__ico svg{width:18px;height:18px;display:block}
+.check__t{font-weight:700;font-style:italic;text-transform:uppercase;letter-spacing:.4px;color:#fff;font-size:clamp(15px,1.35vw,19px);line-height:1.1}
+.check__d{margin-top:5px;color:rgba(255,255,255,.92);font-size:clamp(12px,1.05vw,14.5px);line-height:1.5}
+
+/* card cinza = carrossel (NA FRENTE, à direita, sobrepondo só a BORDA do vermelho) */
+.card-cinza{
+  position:absolute;z-index:3;right:0;top:8%;bottom:8%;width:44%;
+  background:#3a3a3c;
+}
+/* carrossel (crossfade suave + leve zoom) */
+.carousel{
+  border-radius:26px;overflow:hidden;background:#3a3a3c;
+  box-shadow:0 22px 54px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.10);
+  transition:transform .4s var(--ease-out),box-shadow .4s ease;
+}
+.carousel:hover{transform:translateY(-5px);box-shadow:0 30px 64px rgba(0,0,0,.5)}
+.carousel__slide{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transform:scale(1.02);transition:opacity 1.2s ease;
+}
+.carousel__slide.is-active{opacity:1;animation:kenburns 7s ease-out both}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+/* leve escurecida embaixo p/ a tag ficar legível */
+.carousel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.5) 100%)}
+.carousel__tag{
+  position:absolute;z-index:2;left:14px;bottom:12px;
+  background:rgba(10,5,6,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:#fff;font-size:12px;font-weight:600;letter-spacing:.3px;
+  padding:7px 14px;border-radius:30px;border:1px solid rgba(255,255,255,.18);
+}
+/* opções (dots) com animação no hover */
+.carousel__dots{position:absolute;z-index:2;right:14px;bottom:14px;display:flex;gap:8px}
+.carousel__dots button{
+  width:10px;height:10px;border-radius:50%;border:0;cursor:pointer;padding:0;
+  background:rgba(255,255,255,.5);
+  transition:background .3s ease,transform .3s var(--ease-out),box-shadow .3s ease;
+}
+.carousel__dots button:hover{background:#fff;transform:scale(1.6);box-shadow:0 0 0 5px rgba(255,255,255,.22)}
+.carousel__dots button.is-active{background:#fff;transform:scale(1.3)}
+.carousel__dots button.is-active:hover{transform:scale(1.6)}
+
+/* responsivo */
+@media (max-width:860px){
+  .switches{grid-template-columns:repeat(2,1fr)}
+  /* desfaz a sobreposição: vira empilhado (vermelho em cima, cinza embaixo) */
+  .card-vermelho{width:100%;padding-right:clamp(24px,3vw,46px)}
+  .card-cinza{position:relative;right:auto;top:auto;bottom:auto;width:100%;aspect-ratio:16/11;margin-top:18px}
+}
+@media (max-width:560px){
+  .switches{grid-template-columns:1fr}
+  .aw-mark{display:none}
+}
+
+/* =========================================================
+   A AJUSTE — NOSSOS VALORES (seção branca, transição geométrica)
+   Recorte diagonal no topo (base CSS do usuário) revela o cinza acima.
+   ========================================================= */
+.valores{
+  --drop:clamp(38px,5vw,66px);
+  position:relative;overflow:hidden;isolation:isolate;background:#fff;color:#181312;
+  margin-top:calc(-1 * var(--drop));          /* sobe p/ o recorte revelar o cinza */
+  padding:calc(var(--drop) + clamp(64px,10vh,140px)) clamp(20px,5vw,70px) clamp(60px,9vh,120px);
+  clip-path:polygon(0 var(--drop),80% var(--drop),88% 0,100% 0,100% 100%,0 100%);
+}
+/* fundo branco animado sutil (mesmo espírito dos depoimentos) */
+.valores__fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.valores__sheen{position:absolute;inset:0;background:linear-gradient(115deg,transparent 42%,rgba(0,0,0,.03) 50%,transparent 58%);background-size:260% 100%;animation:aboutShine 13s ease-in-out infinite}
+.valores__blob{position:absolute;border-radius:50%;filter:blur(80px)}
+.valores__blob--1{width:40vw;height:40vw;left:-8vw;top:18%;background:radial-gradient(circle,rgba(204,31,39,.08),transparent 70%);animation:drift1 30s ease-in-out infinite alternate}
+.valores__blob--2{width:34vw;height:34vw;right:-6vw;bottom:0;background:radial-gradient(circle,rgba(204,31,39,.06),transparent 70%);animation:drift2 36s ease-in-out infinite alternate}
+/* marca d'água "NOSSOS VALORES" */
+.valores__mark{
+  position:absolute;left:50%;top:calc(var(--drop) + clamp(8px,2vh,26px));transform:translateX(-50%);z-index:1;
+  font-family:"Bebas Neue",sans-serif;font-style:italic;
+  font-size:min(13vw,200px);line-height:.8;color:rgba(20,19,18,.06);
+  white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:.02em;
+}
+/* painel escuro dos pilares (#353535 do PDF) */
+.pillars{
+  position:relative;z-index:2;max-width:860px;margin:clamp(40px,7vh,86px) auto 0;
+  background:linear-gradient(180deg,#3a3a3a 0%,#2c2c2c 100%);
+  border-radius:30px;padding:clamp(28px,3.6vw,54px);
+  box-shadow:0 34px 80px rgba(0,0,0,.4);
+}
+.pillars__title{font-family:"Bebas Neue",sans-serif;font-style:italic;text-align:center;font-size:clamp(26px,3.4vw,46px);color:#fff;letter-spacing:.5px;margin-bottom:clamp(22px,3vh,36px)}
+.pillars__list{list-style:none;display:flex;flex-direction:column;gap:clamp(10px,1.6vh,18px);max-width:600px;margin:0 auto}
+.pillar{display:flex;gap:16px;align-items:flex-start;padding:8px;border-radius:12px;transition:transform .3s var(--ease-out),background .3s ease}
+.pillar:hover{transform:translateX(7px);background:rgba(255,255,255,.06)}
+.pillar__ico{flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:#eaeaea;color:#222;display:grid;place-items:center;margin-top:2px;transition:transform .35s var(--ease-out)}
+.pillar:hover .pillar__ico{transform:scale(1.12) rotate(-6deg)}
+.pillar__ico svg{width:18px;height:18px;display:block}
+.pillar__t{font-weight:700;color:#fff;font-size:clamp(16px,1.5vw,20px);line-height:1.1}
+.pillar__d{margin-top:3px;color:#c9c4c4;font-size:clamp(13px,1.1vw,15px);line-height:1.5}
+
+/* =========================================================
+   A AJUSTE — MARCA CRIADA EM CURITIBA (vermelho animado)
+   ========================================================= */
+.marca{
+  position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  background:linear-gradient(180deg,#cc1f27 0%,#9d141b 100%);
+  padding:clamp(50px,8vh,110px) clamp(20px,5vw,70px) clamp(60px,10vh,120px);
+}
+.marca__fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.marca .fx-blob{opacity:.4}
+.marca__inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,3.4vw,56px);align-items:center}
+.marca__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(30px,4.4vw,58px);line-height:1;letter-spacing:.5px;margin-bottom:clamp(14px,2vh,22px)}
+.marca__p{margin-top:14px;font-size:clamp(14px,1.2vw,17px);line-height:1.65;color:rgba(255,255,255,.94);max-width:560px}
+.marca__photo{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#3a3a3c;box-shadow:0 26px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.14);transition:transform .4s var(--ease-out),box-shadow .4s ease}
+.marca__photo:hover{transform:translateY(-5px);box-shadow:0 34px 70px rgba(0,0,0,.55)}
+.marca__photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.marca__photo:hover img{transform:scale(1.06)}
+.marca__photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
+.marca__tag{
+  position:absolute;z-index:2;left:14px;bottom:12px;
+  background:rgba(10,5,6,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:#fff;font-size:12px;font-weight:600;letter-spacing:.3px;padding:7px 14px;border-radius:30px;border:1px solid rgba(255,255,255,.18);
+}
+@media (max-width:860px){
+  .marca__inner{grid-template-columns:1fr}
+  .marca__photo{order:2}
+}
+
+/* =========================================================
+   PÁGINA MODALIDADES — fundo vermelho ÚNICO e contínuo (nav→footer).
+   Um só bloco com o degradê escuro→vivo (mesma lógica da .ahero) e
+   UM só fundo animado (fx-blob/fx-sheen) — sem emendas.
+   ========================================================= */
+.mod{
+  position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  padding:calc(72px + clamp(34px,6vh,78px)) clamp(20px,5vw,70px) clamp(70px,11vh,150px);
+  /* vermelho fechado: escuro no topo → vivo na base (igual home/ahero) */
+  background:linear-gradient(180deg,#3d0708 0%,#7d1116 26%,#a5181f 58%,#c11d25 100%);
+}
+.mod__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+.mod .fx-blob{opacity:.4}
+/* leve escurecida no topo p/ leitura do cabeçalho */
+.mod::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 82% 55% at 50% 16%,transparent 46%,rgba(30,2,3,.4) 100%);
+}
+.mod__inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+/* watermark vertical "ajuste" (mesmo asset/padrão do site) */
+.mod .aw-mark{top:6%;right:-2%;height:clamp(620px,82vw,1420px);opacity:.08}
+
+/* ---- cabeçalho: título metálico + linha + intro ---- */
+.mod__head{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,70px);
+  align-items:start;margin-bottom:clamp(40px,7vh,82px);
+}
+.mod__titlewrap{display:flex;align-items:center;gap:clamp(14px,2vw,24px);padding-top:6px}
+.mod__title{
+  font-family:"Bebas Neue","Poppins",sans-serif;font-weight:400;font-style:italic;
+  text-transform:uppercase;letter-spacing:1px;line-height:1.06;
+  font-size:clamp(40px,6vw,82px);white-space:nowrap;
+  /* padding + overflow visível p/ o itálico não ser cortado (igual .num__v) */
+  display:inline-block;padding:.04em .16em;overflow:visible;
+  /* metálico cromado (mesmo tratamento dos números da home) */
+  background:linear-gradient(180deg,#fff 0%,#fff 42%,#c9ccd2 58%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.35));
+}
+.mod__line{flex:0 0 auto;height:3px;width:clamp(50px,9vw,150px);border-radius:3px;
+  background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.25))}
+.mod__intro{max-width:560px}
+.mod__intro b{display:block;font-size:clamp(17px,1.7vw,24px);font-weight:700;line-height:1.35;margin-bottom:12px}
+.mod__intro p{font-size:clamp(14px,1.25vw,18px);line-height:1.6;color:rgba(255,255,255,.92)}
+
+/* ---- grade de 6 cards ---- */
+.mod__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,34px)}
+.modcard{
+  position:relative;border-radius:20px;overflow:hidden;aspect-ratio:560/373;
+  box-shadow:0 24px 54px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.10);
+  transition:transform .4s var(--ease-out),box-shadow .4s ease;
+}
+.modcard__img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s var(--ease-out)}
+.modcard__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 28%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.86) 100%)}
+.modcard__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,2vw,28px)}
+.modcard__t{font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:clamp(19px,2vw,27px);line-height:1;margin-bottom:8px}
+.modcard__d{font-size:clamp(12px,1.05vw,14px);line-height:1.45;color:rgba(255,255,255,.9);max-width:94%}
+.modcard:hover{transform:translateY(-8px);box-shadow:0 34px 72px rgba(0,0,0,.55)}
+.modcard:hover .modcard__img{transform:scale(1.08)}
+/* barra vermelha da marca crescendo no hover */
+.modcard::after{content:"";position:absolute;left:0;bottom:0;z-index:3;height:5px;width:100%;
+  background:linear-gradient(90deg,var(--red),var(--red-bright));
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.modcard:hover::after{transform:scaleX(1)}
+/* stagger de entrada dos cards */
+.mod__grid .reveal:nth-child(1){transition-delay:.02s}
+.mod__grid .reveal:nth-child(2){transition-delay:.10s}
+.mod__grid .reveal:nth-child(3){transition-delay:.18s}
+.mod__grid .reveal:nth-child(4){transition-delay:.26s}
+.mod__grid .reveal:nth-child(5){transition-delay:.34s}
+.mod__grid .reveal:nth-child(6){transition-delay:.42s}
+
+/* ---- CTA central ---- */
+.mod__cta{display:flex;justify-content:center;margin-top:clamp(40px,6vh,70px)}
+
+/* ---- bloco final "escolha seu objetivo" ---- */
+.mod__choose{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);
+  align-items:start;margin-top:clamp(60px,10vh,130px);
+}
+.mod__ctitle{
+  font-family:"Bebas Neue","Poppins",sans-serif;font-weight:400;font-style:italic;
+  text-transform:uppercase;line-height:1.02;letter-spacing:.5px;font-size:clamp(30px,4.2vw,56px);
+  padding:.03em .1em;overflow:visible;
+  background:linear-gradient(180deg,#fff 0%,#fff 45%,#cfd2d8 60%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.3));
+}
+.mod__tags{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(24px,4vh,38px)}
+.mtag{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.14);border-radius:30px;
+  padding:11px 12px;font-size:clamp(10.5px,.95vw,13px);font-weight:500;line-height:1.25;color:#fff;
+  transition:transform .3s var(--ease-out),background .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.mtag:hover{transform:translateY(-3px) scale(1.03);background:var(--red);border-color:var(--red-bright);box-shadow:0 10px 24px rgba(204,31,39,.5)}
+.mod__ctext p{font-size:clamp(15px,1.35vw,19px);line-height:1.65;color:#fff;margin-bottom:clamp(16px,2.5vh,24px)}
+.mod__ctext p:last-child{margin-bottom:0;font-weight:500}
+
+/* responsivo */
+@media (max-width:860px){
+  .mod__head{grid-template-columns:1fr;gap:18px}
+  .mod__grid{grid-template-columns:1fr}
+  .mod__choose{grid-template-columns:1fr;gap:28px}
+  .mod .aw-mark{display:none}
+}
+@media (max-width:520px){
+  .mod__titlewrap{flex-wrap:wrap}
+  .mod__tags{grid-template-columns:1fr 1fr}
+}
+
+/* =========================================================
+   BLOG (página) — blog.html — mesmo padrão do site
+   ========================================================= */
+.bpage{
+  position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  padding:calc(72px + clamp(30px,5vh,60px)) clamp(20px,5vw,70px) clamp(50px,8vh,90px);
+  background:linear-gradient(180deg,#161113 0%,#221a1c 55%,#1a1416 100%);
+}
+.bpage__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+.bpage .fx-blob{opacity:.22}
+.bpage .aw-mark{top:2%;right:-3%;height:clamp(560px,70vw,1200px);opacity:.05}
+.bpage__inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+
+/* título metálico cromado reutilizável (permite quebra de linha) */
+.bmetal{
+  font-family:"Bebas Neue","Poppins",sans-serif;font-weight:400;font-style:italic;
+  text-transform:uppercase;letter-spacing:.5px;line-height:1.02;
+  display:inline-block;padding:.02em .08em;overflow:visible;
+  background:linear-gradient(180deg,#fff 0%,#fff 44%,#c9ccd2 60%,#fff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.35));
+}
+
+/* ---- HERO (texto à esquerda + foto sangrando à direita) ---- */
+.bhero{position:relative;z-index:2;max-width:720px;min-height:clamp(400px,54vh,600px);display:flex;flex-direction:column;justify-content:center}
+.bhero__media{
+  position:absolute;top:0;right:0;z-index:1;pointer-events:none;
+  width:clamp(300px,40vw,700px);height:clamp(460px,74vh,800px);
+  object-fit:cover;object-position:60% center;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 34%);
+}
+.bhero__title{font-size:clamp(34px,4.7vw,66px)}
+.bhero__lead{margin-top:clamp(14px,2vh,22px);font-size:clamp(15px,1.4vw,20px);line-height:1.6;color:rgba(255,255,255,.9);max-width:600px}
+.bhero__pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,3.5vh,34px)}
+/* desktop: opções numa linha só (mobile mantém a quebra) */
+@media (min-width:901px){ .bhero__pills{flex-wrap:nowrap} }
+.bpill{
+  display:inline-block;white-space:nowrap;flex:0 0 auto;
+  background:linear-gradient(180deg,#e22730,#a3171d);color:#fff;
+  font-size:clamp(9px,.9vw,11px);font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:8px 15px;border-radius:30px;box-shadow:0 8px 20px rgba(204,31,39,.35);
+  transition:transform .3s var(--ease-out),box-shadow .3s ease;
+}
+.bpill:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 26px rgba(204,31,39,.55)}
+
+/* ---- ARTIGO EM DESTAQUE ---- */
+.bfeat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,56px);align-items:center;margin-top:clamp(48px,8vh,90px)}
+.bfeat__media{border-radius:22px;overflow:hidden;aspect-ratio:16/13;box-shadow:0 26px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+.bfeat__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out)}
+.bfeat__media:hover img{transform:scale(1.05)}
+.bfeat__title{font-size:clamp(26px,3.2vw,44px)}
+.bfeat__lead{margin-top:14px;font-size:clamp(14px,1.3vw,17px);line-height:1.6;color:rgba(255,255,255,.88)}
+.bfeat__rule{display:block;height:1px;width:100%;margin-top:clamp(20px,3vh,28px);background:rgba(255,255,255,.18)}
+
+/* ---- ÚLTIMOS BLOGS ---- */
+.blatest{margin-top:clamp(60px,10vh,120px)}
+.blatest__title{font-size:clamp(30px,4.5vw,60px);margin-bottom:clamp(26px,4vh,44px)}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,32px)}
+/* card estilo overlay: título/descrição sobre a foto */
+.bcard{position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:16/11;background:#2a2426;border:1px solid rgba(255,255,255,.07);box-shadow:0 18px 44px rgba(0,0,0,.4);transition:transform .4s var(--ease-out),box-shadow .4s ease}
+.bcard:hover{transform:translateY(-9px);box-shadow:0 30px 60px rgba(0,0,0,.55)}
+.bcard__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+.bcard:hover .bcard__img{transform:scale(1.08)}
+.bcard__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 28%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.9) 100%)}
+.bcard__tag{position:absolute;top:14px;left:14px;z-index:3;background:linear-gradient(180deg,#e22730,#a3171d);color:#fff;font-size:clamp(9px,.85vw,11px);font-weight:600;letter-spacing:.5px;padding:6px 13px;border-radius:30px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.bcard__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(16px,1.8vw,24px)}
+.bcard__t{font-family:"Bebas Neue",sans-serif;font-style:italic;letter-spacing:.5px;font-size:clamp(18px,1.7vw,24px);line-height:1.04;color:#fff;margin-bottom:6px}
+.bcard__d{font-size:clamp(12px,1.05vw,14px);line-height:1.45;color:rgba(255,255,255,.82);max-width:94%}
+.bcard::after{content:"";position:absolute;left:0;bottom:0;z-index:3;height:4px;width:100%;background:linear-gradient(90deg,var(--red),var(--red-bright));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.bcard:hover::after{transform:scaleX(1)}
+.bgrid .reveal:nth-child(2){transition-delay:.08s}
+.bgrid .reveal:nth-child(3){transition-delay:.16s}
+.bgrid .reveal:nth-child(4){transition-delay:.06s}
+.bgrid .reveal:nth-child(5){transition-delay:.14s}
+
+/* ---- PROFESSORES (painel vermelho) ---- */
+.bteam{position:relative;overflow:hidden;isolation:isolate;margin-top:clamp(60px,10vh,120px);border-radius:28px;padding:clamp(34px,5vw,66px);background:linear-gradient(180deg,#a5181f 0%,#c11d25 100%);box-shadow:0 30px 70px rgba(120,10,15,.4);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,4vw,60px);align-items:center}
+.bteam__title{font-size:clamp(28px,3.6vw,50px)}
+.bteam__lead{margin-top:16px;font-size:clamp(14px,1.3vw,18px);line-height:1.6;color:rgba(255,255,255,.94)}
+.bteam__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,1.6vw,24px)}
+.bmember{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.bmember__ava{width:clamp(58px,6vw,92px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,#4a4446,#2a2527);border:2px solid rgba(255,255,255,.25);display:grid;place-items:center;color:rgba(255,255,255,.5);box-shadow:0 8px 18px rgba(0,0,0,.3);overflow:hidden}
+.bmember__ava svg{width:52%;height:52%}
+.bmember__n{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(13px,1.15vw,17px);letter-spacing:.5px;color:#fff;line-height:1}
+.bmember__r{font-size:clamp(9.5px,.85vw,11px);color:rgba(255,255,255,.85);line-height:1.2}
+.bmember__u{font-size:clamp(9px,.8vw,10.5px);font-style:italic;color:rgba(255,255,255,.7)}
+
+/* ---- CTA final (vermelho + marca d'água) ---- */
+/* full-bleed dentro do .bpage: a faixa escura ao redor É o mesmo fundo animado do blog.
+   Geometria/cores/medidas extraídas do blog(certo).pdf. */
+.bcta{position:relative;overflow:hidden;margin-inline:calc(-1 * clamp(20px,5vw,70px));margin-bottom:calc(-1 * clamp(50px,8vh,90px));padding-top:clamp(24px,2.4vw,40px);background:transparent}
+.bcta__panel{position:relative;overflow:hidden;isolation:isolate;text-align:center;color:#fff;padding:clamp(54px,5.4vw,84px) clamp(20px,5vw,70px) clamp(38px,3.7vw,58px);background:#9e0f13;
+  clip-path:polygon(0 17%,20% 17%,32% 0,68% 0,80% 17%,100% 17%,100% 100%,0 100%)}
+.bcta__mark{position:absolute;left:50%;bottom:-.32em;transform:translateX(-50%);z-index:0;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(150px,19.5vw,380px);letter-spacing:-.02em;line-height:1;color:rgba(255,255,255,.12);white-space:nowrap;pointer-events:none;user-select:none}
+.bcta__inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.bcta__title{font-size:clamp(30px,3.4vw,52px)}
+.bcta__k{margin-top:10px;font-weight:700;font-size:clamp(13px,1.15vw,17px);color:#fff}
+.bcta__lead{margin:10px auto 0;max-width:520px;font-size:clamp(13px,1.05vw,16px);line-height:1.6;color:rgba(255,255,255,.92)}
+.bcta__btn{display:inline-block;margin-top:clamp(18px,1.6vw,26px);background:linear-gradient(120deg,#ff2e2e 0%,#e01515 40%,#a80808 100%);color:#fff;font-weight:600;font-size:clamp(14px,1.1vw,17px);line-height:1.45;padding:14px 48px;border-radius:999px;box-shadow:0 12px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .3s var(--ease-out),box-shadow .3s ease}
+.bcta__btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 22px 44px rgba(0,0,0,.5)}
+
+/* responsivo blog */
+@media (max-width:900px){
+  /* foto do hero deixa de sangrar e vira banner no topo */
+  .bhero__media{position:static;width:100%;height:auto;aspect-ratio:16/10;border-radius:16px;margin-bottom:clamp(22px,3vh,32px);-webkit-mask:none;mask:none}
+  .bhero{max-width:none;min-height:0}
+  .bfeat{grid-template-columns:1fr;gap:24px}
+  .bfeat__media{aspect-ratio:16/10}
+  .bgrid{grid-template-columns:1fr 1fr}
+  .bteam{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:560px){
+  .bgrid{grid-template-columns:1fr}
+  .bcard{aspect-ratio:16/10}
+  .bteam__grid{grid-template-columns:repeat(3,1fr)}
+  .bpage .aw-mark{display:none}
+  .bcta__panel{padding:56px 20px 44px;clip-path:polygon(0 10%,18% 10%,32% 0,68% 0,82% 10%,100% 10%,100% 100%,0 100%)}
+  .bcta__lead br{display:none}
+}
+
+/* =========================================================
+   POST / ARTIGO DE BLOG (blog-massa.html, blog-ansiedade.html)
+   Reaproveita .bpage (fundo animado), .bmetal, .bpill, footer.
+   ========================================================= */
+.bpost{position:relative;z-index:2;max-width:1040px;margin:0 auto}
+.bpost__tag{
+  display:block;width:fit-content;background:linear-gradient(180deg,#e22730,#a3171d);color:#fff;
+  font-size:clamp(9px,.9vw,11px);font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:8px 20px;border-radius:30px;box-shadow:0 8px 20px rgba(204,31,39,.35);
+}
+/* na abertura centralizada (massa) a pílula fica centralizada; na alinhada à esquerda (ansiedade) fica à esquerda */
+.bpost__center .bpost__tag{margin-left:auto;margin-right:auto}
+.bpost__title{font-size:clamp(30px,4.2vw,58px);margin-top:clamp(14px,2vh,20px);max-width:none;text-wrap:balance}
+.bpost__title--wide{max-width:none;font-size:clamp(26px,3.1vw,42px)}
+.bpost__p{margin-top:16px;font-size:clamp(15px,1.25vw,18px);line-height:1.72;color:rgba(255,255,255,.86)}
+.bpost__p--muted{color:rgba(255,255,255,.7);font-size:clamp(13.5px,1.1vw,15.5px)}
+
+/* títulos de seção e subtítulos */
+.bpost__h2{font-size:clamp(26px,3.3vw,46px);margin-top:clamp(44px,7vh,80px);max-width:none}
+.bpost__h3{
+  font-family:"Poppins",sans-serif;font-weight:700;font-style:italic;
+  font-size:clamp(16px,1.45vw,21px);color:#fff;margin-top:clamp(22px,3vh,32px);
+}
+.bpost__h3 + .bpost__p{margin-top:6px}
+
+/* foto full-width arredondada */
+.bpost__media{
+  display:block;width:100%;border-radius:22px;overflow:hidden;
+  margin-top:clamp(26px,4vh,42px);box-shadow:0 26px 60px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.08);
+}
+.bpost__media img{width:100%;height:100%;object-fit:cover;display:block}
+.bpost__media--wide{aspect-ratio:16/6}
+.bpost__media--banner{aspect-ratio:16/8}
+
+/* bloco centralizado (título + parágrafos centrados) */
+.bpost__center{text-align:center}
+.bpost__center .bpost__h2,
+.bpost__center .bpost__h3{margin-left:auto;margin-right:auto}
+.bpost__center .bpost__p{margin-left:auto;margin-right:auto;max-width:800px}
+
+/* seção texto + foto lateral */
+.bpost__split{
+  display:grid;grid-template-columns:1.05fr .8fr;gap:clamp(28px,4vw,58px);
+  align-items:center;margin-top:clamp(34px,5vh,54px);
+}
+.bpost__split .bpost__media{margin-top:0}
+.bpost__split .bpost__h2{margin-top:0}
+.bpost__split--reverse{grid-template-columns:.8fr 1.05fr}
+.bpost__split--reverse .bpost__media{order:-1}
+
+/* lista com check vermelho */
+.bpost__list{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:11px}
+.bpost__list li{position:relative;padding-left:32px;font-size:clamp(14px,1.15vw,17px);line-height:1.5;color:rgba(255,255,255,.88)}
+.bpost__list li::before{
+  content:"✓";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:6px;
+  background:linear-gradient(180deg,#e22730,#a3171d);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-items:center;box-shadow:0 4px 10px rgba(204,31,39,.4);
+}
+
+/* lista simples (erros) — linhas sem marcador */
+.bpost__lines{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.bpost__lines li{font-size:clamp(13.5px,1.1vw,16px);line-height:1.5;color:rgba(255,255,255,.8)}
+
+/* pills de categorias (quais exercícios podem ajudar) */
+.bpost__pills{display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin:clamp(22px,3vh,30px) auto 0;max-width:780px}
+
+/* colagem de fotos (o que pode atrasar) */
+.bpost__collage{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bpost__collage img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 34px rgba(0,0,0,.4);display:block}
+.bpost__collage .bpost__collage-top{aspect-ratio:3/4}
+.bpost__collage .bpost__collage-wide{grid-column:1 / -1;aspect-ratio:16/8}
+
+/* espaçamento de fechamento do artigo */
+.bpost__outro{margin-top:clamp(30px,4vh,44px)}
+
+/* — extensões p/ os LPs preguiça/pilates — */
+/* pill centralizada na página com corpo do artigo à esquerda */
+.bpost__tag--center{margin-left:auto;margin-right:auto}
+/* H2 numerado das 7 dicas — mais compacto que o H2 padrão */
+.bpost__h2--dica{font-size:clamp(22px,2.6vw,36px);margin-top:clamp(34px,5vh,56px)}
+/* divisória sutil antes da conclusão */
+.bpost__rule{border:0;border-top:1px solid rgba(255,255,255,.16);margin-top:clamp(38px,6vh,64px)}
+/* banner panorâmico (foto larga dos LPs) */
+.bpost__media--panorama{aspect-ratio:16/5}
+
+/* responsivo do artigo */
+@media (max-width:820px){
+  .bpost__split,
+  .bpost__split--reverse{grid-template-columns:1fr;gap:22px}
+  .bpost__split--reverse .bpost__media{order:0}
+  .bpost__title{max-width:none}
+}

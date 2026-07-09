@@ -1,0 +1,18 @@
+# Deploy / servidor
+.htaccess.wpbak-*
+*.zip
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Temporários
+*.log
+*.tmp
+_shot*.html

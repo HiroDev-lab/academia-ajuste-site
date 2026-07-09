@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academia Ajuste — A academia que cuida de pessoas | Curitiba e Paraná</title>
+  <meta name="description" content="Rede de academias no Paraná com estrutura moderna, professores preparados e ambiente acolhedor. Musculação, aulas coletivas, pilates e mais em Curitiba (Xaxim), Campo Mourão, Toledo, Guarapuava e Ponta Grossa." />
+  <!-- marca que o JS está ativo: só então escondemos os elementos de reveal
+       (se o JS falhar/estiver off, o conteúdo aparece normalmente) -->
+  <script>document.documentElement.className += " js";</script>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+  <!-- NAV — faixa horizontal de vidro, fixa no topo -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#home" aria-label="Academia Ajuste">
+      <img src="assets/logo.svg" alt="Academia Ajuste" width="119" height="47" />
+    </a>
+    <nav class="nav__menu" id="navMenu" aria-label="Menu principal">
+      <a href="#home" class="is-active">Início</a>
+      <a href="a-ajuste.html">A Ajuste</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="unidades.html">Unidades</a>
+      <a href="blog.html">Blog</a>
+      <a href="unidades.html" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    </nav>
+    <a href="unidades.html" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+
+    <!-- fundo com movimento fluido/suave -->
+    <div class="hero__fx" aria-hidden="true">
+      <span class="fx-blob fx-blob--1"></span>
+      <span class="fx-blob fx-blob--2"></span>
+      <span class="fx-blob fx-blob--3"></span>
+      <span class="fx-sheen"></span>
+    </div>
+
+    <!-- atletas (entram das laterais) -->
+    <div class="athlete athlete--left" aria-hidden="true">
+      <img src="assets/athlete-left.png" alt="" />
+    </div>
+    <div class="athlete athlete--right" aria-hidden="true">
+      <img src="assets/athlete-right.png" alt="" />
+    </div>
+
+    <!-- conteúdo central -->
+    <div class="hero__content">
+      <h1 class="headline">
+        <span class="headline__mask"><span class="headline__line">A ACADEMIA QUE</span></span>
+        <span class="headline__mask"><span class="headline__line headline__line--2">CUIDA DE PESSOAS.</span></span>
+      </h1>
+
+      <p class="hero__lead">
+        Mais do que equipamentos modernos ou aulas completas, acreditamos que cada
+        pessoa merece um ambiente que incentive uma vida mais saudável, com
+        acolhimento, estrutura e profissionais que realmente se importam.
+      </p>
+
+      <div class="hero__btns">
+        <a href="unidades.html" class="hbtn hbtn--primary">QUERO TREINAR AGORA</a>
+        <a href="unidades.html" class="hbtn hbtn--ghost">VER UNIDADES</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WRAPPER CINZA ÚNICO (gradiente contínuo + uma só animação) -->
+  <div class="gray-wrap">
+  <div class="gray-wrap__shine" aria-hidden="true"></div>
+
+  <!-- bloco de números: puxado pra cima sobre o vermelho do hero.
+       Vermelho ACIMA da linha = hero (atrás); cinza ABAIXO = o próprio wrapper (contínuo). -->
+  <div class="numbers" id="numbers">
+    <div class="numbers__hex">
+      <div class="numbers__grid">
+        <div class="num">
+          <span class="num__v" data-count="6" data-prefix="+" data-decimals="0">+0</span>
+          <span class="num__l">UNIDADES<br />ATIVAS</span>
+        </div>
+        <span class="num__sep" aria-hidden="true"></span>
+        <div class="num">
+          <span class="num__v" id="alunos" data-count="10124" data-prefix="+" data-decimals="0" data-tick="1">+0</span>
+          <span class="num__l">ALUNOS<br />ATIVOS</span>
+        </div>
+        <span class="num__sep" aria-hidden="true"></span>
+        <div class="num">
+          <span class="num__v" data-count="10" data-prefix="+" data-decimals="0">+0</span>
+          <span class="num__l">ANOS NO<br />MERCADO</span>
+        </div>
+        <span class="num__sep" aria-hidden="true"></span>
+        <div class="num">
+          <span class="num__v" data-count="4.9" data-prefix="" data-decimals="1">0.0</span>
+          <span class="num__l">AVALIAÇÃO<br />NO GOOGLE</span>
+        </div>
+      </div>
+    </div>
+    <div class="numbers__contour" aria-hidden="true"></div>
+  </div>
+
+  <!-- ============ NÃO SOMOS APENAS UMA ACADEMIA ============ -->
+  <section class="about" id="sobre">
+    <span class="about__mark" aria-hidden="true">ajuste</span>
+
+    <header class="about__head">
+      <span class="badge reveal">Academia especializada no sul do Brasil</span>
+      <h2 class="about__title reveal">NÃO SOMOS APENAS UMA ACADEMIA.</h2>
+      <p class="about__sub reveal">Somos um lugar onde pessoas comuns constroem resultados extraordinários.</p>
+    </header>
+
+    <div class="about__grid">
+      <!-- box esquerda: conteúdo padrão + detalhe (troca ao passar o mouse nos botões) -->
+      <article class="fbox reveal" id="fbox"
+        data-img="assets/academia-ajuste-estrutura-moderna.png"
+        data-title="MAIS DO QUE UMA ACADEMIA"
+        data-desc="Equipamentos de qualidade para treinar com segurança.">
+        <div class="fbox__media">
+          <img id="fboxImg" src="assets/academia-ajuste-estrutura-moderna.png" alt="Equipamentos da academia" />
+        </div>
+        <div class="fbox__body">
+          <h3 class="fbox__title" id="fboxTitle">MAIS DO QUE UMA ACADEMIA</h3>
+          <p class="fbox__text" id="fboxText">Equipamentos de qualidade para treinar com segurança.</p>
+          <a href="unidades.html" class="btn-red fbox__cta">QUERO TREINAR AGORA</a>
+        </div>
+      </article>
+
+      <!-- botões diferenciais (direita) — controlam o conteúdo da box -->
+      <div class="diffs reveal">
+        <button class="diff" type="button"
+          data-img="assets/academia-ajuste-estrutura-moderna.png"
+          data-title="ESTRUTURA MODERNA"
+          data-desc="Aparelhos novos, revisados e organizados para você treinar com segurança e conforto.">
+          <img class="diff__icon" src="assets/bolinha.svg" alt="" aria-hidden="true" />
+          <span class="diff__label">ESTRUTURA MODERNA</span>
+        </button>
+
+        <button class="diff" type="button"
+          data-img="assets/academia-ajuste-professores.png"
+          data-title="PROFESSORES PREPARADOS"
+          data-desc="Equipe que acompanha, corrige e orienta cada treino de perto — do iniciante ao avançado.">
+          <img class="diff__icon" src="assets/bolinha.svg" alt="" aria-hidden="true" />
+          <span class="diff__label">PROFESSORES PREPARADOS</span>
+        </button>
+
+        <button class="diff" type="button"
+          data-img="assets/academia-ajuste-ambiente.png"
+          data-title="AMBIENTE ORGANIZADO"
+          data-desc="Espaço limpo, climatizado e bem cuidado, pensado para o seu conforto e bem-estar.">
+          <img class="diff__icon" src="assets/bolinha.svg" alt="" aria-hidden="true" />
+          <span class="diff__label">AMBIENTE ORGANIZADO</span>
+        </button>
+
+        <button class="diff" type="button"
+          data-img="assets/academia-ajuste-aulas-coletivas.png"
+          data-title="AULAS COLETIVAS"
+          data-desc="Dança, spinning, luta e muito mais — energia em grupo todos os dias da semana.">
+          <img class="diff__icon" src="assets/bolinha.svg" alt="" aria-hidden="true" />
+          <span class="diff__label">AULAS COLETIVAS</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESCOLHA SEU JEITO DE EVOLUIR (cinza > foto c/ gradiente > preto) ============ -->
+  <section class="modal" id="modalidades">
+    <div class="modal__bg" aria-hidden="true"></div>
+    <div class="modal__panel">
+      <header class="modal__head">
+        <h2 class="modal__title reveal">Escolha seu jeito de evoluir.</h2>
+        <p class="modal__sub reveal">Acreditamos que saúde muda vidas.</p>
+      </header>
+
+      <div class="modal__grid">
+        <article class="mcard reveal"><img src="assets/academia-ajuste-danca.png" alt="Dança" /><span class="mcard__name">Dança</span></article>
+        <article class="mcard reveal"><img src="assets/academia-ajuste-spinning.png" alt="Spinning" /><span class="mcard__name">Spinning</span></article>
+        <article class="mcard reveal"><img src="assets/academia-ajuste-musculacao.png" alt="Musculação" /><span class="mcard__name">Musculação</span></article>
+        <article class="mcard reveal"><img src="assets/academia-ajuste-fitdance.png" alt="Fitdance" /><span class="mcard__name">Fitdance</span></article>
+        <article class="mcard reveal"><img src="assets/academia-ajuste-pilates.png" alt="Pilates" /><span class="mcard__name">Pilates</span></article>
+        <article class="mcard reveal"><img src="assets/academia-ajuste-luta.png" alt="Luta" /><span class="mcard__name">Luta</span></article>
+      </div>
+
+      <div class="modal__cta reveal"><a href="unidades.html" class="btn-pill">QUERO TREINAR AGORA</a></div>
+    </div>
+  </section>
+  </div><!-- /.gray-wrap -->
+
+  <!-- WRAPPER ESCURO ÚNICO: unidades + storytelling dividem UM fundo preto
+       animado contínuo (segue o preto do modal, sem emendas, animação sincronizada).
+       Fade no topo do fx p/ a animação "entrar" suave a partir do preto do modal. -->
+  <div class="dark-wrap">
+  <div class="dark-wrap__fx" aria-hidden="true">
+    <span class="fx-blob fx-blob--1"></span>
+    <span class="fx-blob fx-blob--2"></span>
+    <span class="fx-blob fx-blob--3"></span>
+    <span class="fx-sheen"></span>
+  </div>
+
+  <!-- ============ LOCALIZAÇÃO DAS UNIDADES ============ -->
+  <section class="location" id="unidades">
+    <span class="location__mark" aria-hidden="true">Unidades</span>
+
+    <div class="location__inner">
+      <header class="location__head">
+        <h2 class="location__title reveal">Localização das<br />nossas unidades</h2>
+        <p class="location__sub reveal">Todas nossas unidades estão em torno da região do Paraná.</p>
+      </header>
+
+      <div class="location__grid">
+        <!-- botões de unidade — MESMA animação dos botões .diff (vão pra vermelho + deslizam) -->
+        <div class="units reveal">
+          <button class="unit is-active" type="button"
+            data-city="Campo Mourão"
+            data-map="Av. Goioerê, 1960, Campo Mourão - PR">
+            <span class="unit__city">Campo Mourão</span>
+            <span class="unit__addr">Av. Goioerê, 1960 - Centro,<br />Campo Mourão - PR, 87303-110</span>
+          </button>
+
+          <button class="unit" type="button"
+            data-city="Xaxim"
+            data-map="Rua Antônio Rebelatto, 324 - Xaxim, Curitiba - PR, 81710-120">
+            <span class="unit__city">Xaxim</span>
+            <span class="unit__addr">Rua Antônio Rebelatto, 324 - Xaxim,<br />Curitiba - PR, 81710-120</span>
+          </button>
+
+          <button class="unit" type="button"
+            data-city="Toledo"
+            data-map="Av. Maripá, 3563 - Vila Operária, Toledo - PR, 85909-000">
+            <span class="unit__city">Toledo</span>
+            <span class="unit__addr">Av. Maripá, 3563 - Vila Operária,<br />Toledo - PR, 85909-000</span>
+          </button>
+
+          <button class="unit" type="button"
+            data-city="Guarapuava"
+            data-map="R. Saldanha Marinho, 2131 - Centro, Guarapuava - PR, 85010-290">
+            <span class="unit__city">Guarapuava</span>
+            <span class="unit__addr">R. Saldanha Marinho, 2131 - Centro,<br />Guarapuava - PR, 85010-290</span>
+          </button>
+
+          <button class="unit" type="button"
+            data-city="Ponta Grossa"
+            data-map="Av. Dom Pedro II, 333 - Nova Rússia, Ponta Grossa - PR, 84033-260">
+            <span class="unit__city">Ponta Grossa</span>
+            <span class="unit__addr">Av. Dom Pedro II, 333 - Nova Rússia,<br />Ponta Grossa - PR, 84033-260</span>
+          </button>
+        </div>
+
+        <!-- caixa grande do mapa (muda conforme a unidade selecionada) -->
+        <div class="locmap reveal">
+          <span class="locmap__chip" id="locMapChip">Campo Mourão</span>
+          <iframe class="locmap__frame" id="locMapFrame"
+            title="Mapa da unidade selecionada"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Av.%20Goioer%C3%AA%2C%201960%2C%20Campo%20Mour%C3%A3o%20-%20PR&z=15&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORYTELLING — bloco de texto (efeito máquina de escrever) ============ -->
+  <section class="story" id="historia">
+    <div class="story__inner">
+      <h2 class="story__title" data-tw>MAIS DO QUE TREINAR, ACREDITAMOS<br />EM TRANSFORMAR VIDAS.</h2>
+      <p class="story__lead" data-tw>A Ajuste nasceu da inconformidade.</p>
+
+      <h3 class="story__head" data-tw>CADA DETALHE PENSADO PARA A SUA <span class="hl">MELHOR EXPERIÊNCIA</span></h3>
+
+      <p class="story__p" data-tw>Hoje, cada detalhe da Ajuste é planejado para entregar uma experiência completa para quem busca uma academia com qualidade, preço acessível e acompanhamento de verdade.</p>
+      <p class="story__p" data-tw>Nossas unidades contam com equipamentos modernos, ambientes climatizados, espaços organizados, professores preparados, aulas coletivas, localização de fácil acesso e estacionamento, criando uma rotina de treino mais prática, segura e motivadora.</p>
+      <p class="story__p" data-tw>Da chegada à recepção até o acompanhamento durante o treino, tudo é pensado para que o aluno se sinta bem, tenha orientação, encontre estrutura e consiga manter constância nos seus objetivos, seja para emagrecer, ganhar massa muscular, melhorar o condicionamento físico ou cuidar da saúde.</p>
+      <p class="story__p" data-tw>Na Ajuste, acreditamos que uma boa academia precisa unir estrutura, atendimento, conforto e resultado. Por isso, investimos constantemente em melhorias, tecnologia, manutenção dos aparelhos e organização dos ambientes, garantindo uma experiência que vai além da matrícula.</p>
+
+      <p class="story__tag" data-tw>UMA ACADEMIA FEITA PARA <span class="hl">PESSOAS REAIS,</span> COM <span class="hl">OBJETIVOS REAIS</span> E RESULTADOS QUE <span class="hl">TRANSFORMAM VIDAS.</span></p>
+
+      <div class="story__cta">
+        <a href="unidades.html" class="hbtn hbtn--primary">QUERO TREINAR AGORA</a>
+      </div>
+    </div>
+  </section>
+  </div><!-- /.dark-wrap -->
+
+  <!-- ============ DEPOIMENTOS — seção branca com corte diagonal (divisão preto/branco) ============ -->
+  <section class="tt" id="depoimentos">
+    <!-- fundo branco animado (sutil), no mesmo espírito das outras seções -->
+    <div class="tt__fx" aria-hidden="true">
+      <span class="tt__sheen"></span>
+      <span class="tt__blob tt__blob--1"></span>
+      <span class="tt__blob tt__blob--2"></span>
+    </div>
+
+    <div class="tt__inner">
+      <header class="tt__head">
+        <div class="tt__head-text">
+          <span class="badge reveal">Quem já treina em nossas academias</span>
+          <h2 class="tt__title reveal">O QUE DIZEM<br />NOSSOS ALUNOS</h2>
+          <p class="tt__sub reveal">Aqui na Ajuste, tratamos cada aluno com atenção, proporcionando um ambiente acolhedor para que todos possam cuidar da saúde sem preocupações — e isso fica evidente na opinião de quem frequenta a Ajuste diariamente.</p>
+        </div>
+        <div class="tt__faces reveal" aria-hidden="true">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="" referrerpolicy="no-referrer" />
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" referrerpolicy="no-referrer" />
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" referrerpolicy="no-referrer" />
+        </div>
+      </header>
+
+      <div class="tt__grid">
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/women/65.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Mariana Alves</span><span class="review__meta">Local Guide · 12 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">2 meses atrás</span></div>
+          <p class="review__text">Estrutura excelente e professores super atenciosos. Ambiente sempre limpo e equipamentos em ordem. Recomendo demais!</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Rafael Souza</span><span class="review__meta">8 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">3 meses atrás</span></div>
+          <p class="review__text">Melhor academia da região. As aulas coletivas são animadas e os instrutores ajudam em tudo. Virei fã do lugar!</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/women/12.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Camila Ribeiro</span><span class="review__meta">Local Guide · 21 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">1 mês atrás</span></div>
+          <p class="review__text">Ambiente acolhedor e bem cuidado. Consegui criar uma rotina de treino e já vejo resultados. Vale muito a pena.</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/men/52.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Bruno Carvalho</span><span class="review__meta">5 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">2 semanas atrás</span></div>
+          <p class="review__text">Equipe nota mil, sempre disposta a ajudar. Aparelhos modernos e espaço organizado. Treinar aqui é um prazer.</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/women/44.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Juliana Castro</span><span class="review__meta">Local Guide · 34 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">1 mês atrás</span></div>
+          <p class="review__text">Atendimento de primeira do início ao fim. Me sinto motivada toda vez que chego. Estrutura simplesmente impecável!</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="review reveal">
+          <div class="review__top">
+            <img class="review__ava" src="https://randomuser.me/api/portraits/men/76.jpg" alt="" referrerpolicy="no-referrer" />
+            <div class="review__id"><span class="review__name">Diego Fernandes</span><span class="review__meta">9 avaliações</span></div>
+            <span class="review__g" aria-label="Avaliação do Google"><svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg></span>
+          </div>
+          <div class="review__stars">★★★★★ <span class="review__when">4 meses atrás</span></div>
+          <p class="review__text">Preço justo e qualidade de sobra. Professores preparados e ambiente climatizado. Indico para todo mundo!</p>
+          <div class="review__actions">
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21h2V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg> Gostei</button>
+            <button class="review__btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Compartilhar</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOG — seção vermelha animada ============ -->
+  <section class="blog" id="blog">
+    <div class="blog__fx" aria-hidden="true">
+      <span class="fx-blob fx-blob--1"></span>
+      <span class="fx-blob fx-blob--2"></span>
+      <span class="fx-blob fx-blob--3"></span>
+      <span class="fx-sheen"></span>
+    </div>
+    <span class="blog__mark" aria-hidden="true">Notícias</span>
+
+    <div class="blog__inner">
+      <header class="blog__head">
+        <h2 class="blog__title reveal">Blog</h2>
+        <p class="blog__sub reveal">Conteúdos sobre saúde, musculação, emagrecimento, hipertrofia, qualidade de vida e bem-estar, produzidos por quem vive o universo fitness todos os dias. Dicas práticas e orientações para conquistar resultados e manter uma rotina ativa.</p>
+      </header>
+
+      <div class="blog__grid">
+        <article class="post reveal">
+          <a href="blog-massa.html" class="post__media"><img src="assets/academia-ajuste-ganho-massa-muscular.jpg" alt="Quanto tempo leva para ganhar massa muscular" /></a>
+          <div class="post__body">
+            <h3 class="post__title">Quanto tempo leva para ganhar massa muscular?</h3>
+            <a href="blog-massa.html" class="post__go" aria-label="Ler artigo">→</a>
+          </div>
+        </article>
+
+        <article class="post reveal">
+          <a href="blog-ansiedade.html" class="post__media"><img src="assets/academia-ajuste-exercicio-ansiedade.jpg" alt="Exercícios ajudam na ansiedade" /></a>
+          <div class="post__body">
+            <h3 class="post__title">Exercícios ajudam na ansiedade?</h3>
+            <a href="blog-ansiedade.html" class="post__go" aria-label="Ler artigo">→</a>
+          </div>
+        </article>
+
+        <article class="post reveal">
+          <a href="blog-pilates.html" class="post__media"><img src="assets/academia-ajuste-aula-pilates.jpg" alt="Pilates melhora dores nas costas" /></a>
+          <div class="post__body">
+            <h3 class="post__title">Pilates melhora dores nas costas?</h3>
+            <a href="blog-pilates.html" class="post__go" aria-label="Ler artigo">→</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (base do PDF) ============ -->
+  <footer class="foot">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="assets/logo.svg" alt="Academia Ajuste" />
+        <p class="foot__desc">Desde o primeiro dia, nosso compromisso nunca foi apenas abrir academias. Foi criar espaços onde as pessoas sintam vontade de voltar, encontrem apoio para alcançar seus objetivos e façam da atividade física um hábito para a vida.</p>
+        <div class="foot__social" aria-label="Redes sociais">
+          <a href="https://instagram.com/ajuste_xaxim" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.97.24 2.67.51.72.28 1.33.66 1.94 1.27.61.61.99 1.22 1.27 1.94.27.7.46 1.5.51 2.67.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.17-.24 1.97-.51 2.67-.28.72-.66 1.33-1.27 1.94-.61.61-1.22.99-1.94 1.27-.7.27-1.5.46-2.67.51-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.17-.05-1.97-.24-2.67-.51a5.4 5.4 0 0 1-1.94-1.27 5.4 5.4 0 0 1-1.27-1.94c-.27-.7-.46-1.5-.51-2.67C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.17.24-1.97.51-2.67.28-.72.66-1.33 1.27-1.94A5.4 5.4 0 0 1 5.99 2.78c.7-.27 1.5-.46 2.67-.51C9.96 2.2 10.36 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.21 8.49 3.2 8.86 3.2 12s.01 3.51.07 4.75c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.51 4.01 15.14 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 16.94 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 12 15.14 3.14 3.14 0 0 0 12 8.86zm5.14-3.24a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+          <a href="https://wa.me/5541984892765" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 1.8c2.18 0 4.23.85 5.77 2.39a8.13 8.13 0 0 1 2.39 5.77c0 4.5-3.66 8.16-8.16 8.16h-.01c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.16-8.16zm-4.6 4.42c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.07.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.62.71.23 1.36.2 1.88.12.57-.09 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.62-.91-2.21-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.57-.01z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="foot__col" aria-label="Acesso rápido">
+        <h3 class="foot__h">Acesso rápido</h3>
+        <a href="#home">Início</a>
+        <a href="a-ajuste.html">A Ajuste</a>
+        <a href="modalidades.html">Modalidades</a>
+        <a href="unidades.html">Unidades</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+
+      <div class="foot__col">
+        <h3 class="foot__h">Nossos contatos</h3>
+        <p class="foot__contact"><strong>CEO – Academia Ajuste</strong></p>
+        <p class="foot__contact">R. Emanuel Kant, 60 – Capão Raso<br />Curitiba – PR, 81020-670</p>
+      </div>
+    </div>
+
+    <div class="foot__bar">
+      <p class="foot__copy">© 2026 Rede Ajuste. Todos os direitos reservados.</p>
+      <p class="foot__credits">
+        <a class="foot__dev" href="https://www.behance.net/tuliohenrique1" target="_blank" rel="noopener noreferrer">Design ux e ui | Túlio Henrique</a>
+        <span class="foot__sep">·</span>
+        <a class="foot__dev" href="https://github.com/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>

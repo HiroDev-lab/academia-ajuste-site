@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unidades — Rede Ajuste</title>
+  <meta name="description" content="Conheça as unidades da Academia Ajuste no Paraná: Xaxim (Curitiba), Campo Mourão, Toledo, Guarapuava e Ponta Grossa. Estrutura, acompanhamento e a mesma essência em cada cidade." />
+  <script>document.documentElement.className += " js";</script>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+  <style>
+    /* ============ PÁGINA UNIDADES (segue a paleta/animações do site) ============ */
+    .uni{position:relative;background:var(--ink,#0a0506);color:#fff;overflow:hidden;padding:130px 0 90px}
+    .uni__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+    .uni__mark{position:absolute;right:-.04em;top:6%;writing-mode:vertical-rl;font-family:"Bebas Neue",sans-serif;font-size:clamp(70px,13vw,200px);letter-spacing:6px;color:rgba(255,255,255,.045);z-index:0;pointer-events:none;user-select:none;line-height:.8}
+    .uni__inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,70px)}
+    .uni__title{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(44px,8vw,92px);line-height:.95;letter-spacing:1px;margin:10px 0 8px}
+    .uni__sub{color:var(--grey,#b9b3b4);font-size:clamp(14px,1.6vw,17px);margin:0 0 34px;max-width:620px}
+
+    .uni__grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:26px;align-items:stretch}
+
+    /* ---- lista de unidades (botões com animação no hover) ---- */
+    .uni__list{display:flex;flex-direction:column;gap:12px}
+    .unit-card{position:relative;display:flex;flex-direction:column;gap:3px;text-align:left;width:100%;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;
+      padding:15px 18px;cursor:pointer;color:#fff;overflow:hidden;
+      transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,border-color .3s,box-shadow .3s}
+    .unit-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red-bright,#e22730);transform:scaleY(0);transform-origin:bottom;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+    .unit-card::after{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;
+      background:linear-gradient(105deg,transparent,rgba(255,255,255,.10),transparent);transform:skewX(-12deg);transition:left .6s ease}
+    .unit-card:hover{transform:translateX(7px);background:rgba(204,31,39,.16);border-color:rgba(204,31,39,.55)}
+    .unit-card:hover::before{transform:scaleY(1)}
+    .unit-card:hover::after{left:130%}
+    .unit-card.is-active{background:linear-gradient(180deg,var(--red-bright,#e22730),var(--red,#CC1F27));border-color:var(--red-bright,#e22730);box-shadow:0 14px 32px rgba(204,31,39,.4)}
+    .unit-card.is-active::before{transform:scaleY(1);background:#fff}
+    .unit-card__city{font-weight:700;font-size:16px;letter-spacing:.2px}
+    .unit-card__addr{font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.35}
+    .unit-card.is-active .unit-card__addr{color:rgba(255,255,255,.9)}
+
+    /* ---- painel da direita: foto da unidade + WhatsApp/Instagram ---- */
+    .uni__panel{position:relative;border-radius:22px;overflow:hidden;min-height:440px;border:1px solid rgba(255,255,255,.08);background:#140a0b}
+    .uni__photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.07);transition:opacity .8s ease,transform 6s ease}
+    .uni__photo.is-active{opacity:1;transform:scale(1)}
+    .uni__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,6,.08) 38%,rgba(10,5,6,.55) 68%,rgba(10,5,6,.94));pointer-events:none}
+    .uni__info{position:absolute;left:0;right:0;bottom:0;padding:26px 26px 24px;z-index:2}
+    .uni__name{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,40px);letter-spacing:1px;margin:0;line-height:1}
+    .uni__addr{font-size:14px;color:#dcd5d6;margin:6px 0 16px;max-width:540px;line-height:1.4}
+    .uni__links{display:flex;gap:12px;flex-wrap:wrap}
+    .uni__btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:14px;padding:12px 18px;border-radius:12px;text-decoration:none;color:#fff;transition:transform .16s,filter .2s,box-shadow .2s}
+    .uni__btn svg{width:18px;height:18px;flex:none}
+    .uni__btn--wpp{background:#25D366;color:#06351a;box-shadow:0 12px 26px rgba(37,211,102,.32)}
+    .uni__btn--ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);box-shadow:0 12px 26px rgba(220,39,67,.32)}
+    .uni__btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+    .uni__info.in .uni__name{animation:uniIn .5s cubic-bezier(.16,1,.3,1) both}
+    .uni__info.in .uni__addr{animation:uniIn .5s .08s cubic-bezier(.16,1,.3,1) both}
+    .uni__info.in .uni__links{animation:uniIn .5s .16s cubic-bezier(.16,1,.3,1) both}
+    @keyframes uniIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+    /* ============ SEÇÃO VERMELHA: rede que cresce + essência + galeria ============ */
+    .unired{position:relative;background:var(--red,#CC1F27);color:#fff;overflow:hidden;padding:clamp(64px,9vw,116px) 0}
+    .unired__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none}
+    .unired__inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,70px);text-align:center}
+    .unired__title{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(32px,5.4vw,60px);line-height:1.02;letter-spacing:1px;margin:0 auto 28px}
+    .unired__p{font-size:clamp(14px,1.6vw,16px);line-height:1.65;color:rgba(255,255,255,.93);max-width:760px;margin:0 auto 16px}
+    .unired__title2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(28px,4.6vw,50px);letter-spacing:1px;margin:52px auto 14px}
+    .unired__sub{font-size:clamp(14px,1.6vw,16px);color:rgba(255,255,255,.9);max-width:700px;margin:0 auto 36px;line-height:1.55}
+    .collage{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:16px;padding:20px;background:#c40d1e;border-radius:24px;aspect-ratio:1010/514;max-width:1010px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,.28)}
+    .collage img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+    .collage img:hover{transform:scale(1.04);box-shadow:0 16px 34px rgba(0,0,0,.4);position:relative;z-index:2}
+    .collage img:nth-child(1),.collage img:nth-child(2),.collage img:nth-child(3){grid-column:span 2}
+    .collage img:nth-child(4),.collage img:nth-child(5){grid-column:span 3}
+    @media (max-width:600px){
+      .collage{aspect-ratio:auto;grid-template-columns:1fr;grid-template-rows:none;padding:14px;gap:10px;border-radius:18px}
+      .collage img{height:auto;aspect-ratio:16/10}
+      .collage img:nth-child(1),.collage img:nth-child(2),.collage img:nth-child(3),
+      .collage img:nth-child(4),.collage img:nth-child(5){grid-column:auto}
+    }
+
+    /* ============ responsivo ============ */
+    @media (max-width:880px){
+      .uni__grid{grid-template-columns:1fr}
+      .uni__panel{min-height:380px;order:-1}
+      .uni__mark{display:none}
+    }
+    @media (max-width:520px){
+      .uni{padding:110px 0 70px}
+      .uni__panel{min-height:340px}
+      .uni__links{gap:9px}
+      .uni__btn{font-size:13px;padding:11px 15px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV — padrão do site -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="index.html" aria-label="Academia Ajuste">
+      <img src="assets/logo.svg" alt="Academia Ajuste" width="119" height="47" />
+    </a>
+    <nav class="nav__menu" id="navMenu" aria-label="Menu principal">
+      <a href="index.html">Início</a>
+      <a href="a-ajuste.html">A Ajuste</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="unidades.html" class="is-active">Unidades</a>
+      <a href="blog.html">Blog</a>
+      <a href="unidades.html" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    </nav>
+    <a href="unidades.html" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ HERO UNIDADES (fundo escuro animado) ============ -->
+  <section class="uni" id="topo">
+    <div class="uni__fx" aria-hidden="true">
+      <span class="fx-blob fx-blob--1"></span>
+      <span class="fx-blob fx-blob--2"></span>
+      <span class="fx-blob fx-blob--3"></span>
+      <span class="fx-sheen"></span>
+    </div>
+    <span class="uni__mark" aria-hidden="true">Unidades</span>
+
+    <div class="uni__inner">
+      <span class="badge reveal">Nossas unidades</span>
+      <h1 class="uni__title reveal">NOSSAS UNIDADES</h1>
+      <p class="uni__sub reveal">Todas as nossas unidades estão em torno da região do Paraná.</p>
+
+      <div class="uni__grid">
+        <!-- LISTA -->
+        <div class="uni__list reveal" role="tablist" aria-label="Selecione uma unidade">
+          <button class="unit-card is-active" type="button" aria-pressed="true">
+            <span class="unit-card__city">Xaxim — Sede</span>
+            <span class="unit-card__addr">Rua Antônio Rebelatto, 324 - Xaxim, Curitiba - PR</span>
+          </button>
+          <button class="unit-card" type="button" aria-pressed="false">
+            <span class="unit-card__city">Campo Mourão</span>
+            <span class="unit-card__addr">Av. Goioerê, 1960 - Centro, Campo Mourão - PR</span>
+          </button>
+          <button class="unit-card" type="button" aria-pressed="false">
+            <span class="unit-card__city">Toledo</span>
+            <span class="unit-card__addr">Av. Maripá, 3563 - Vila Operária, Toledo - PR</span>
+          </button>
+          <button class="unit-card" type="button" aria-pressed="false">
+            <span class="unit-card__city">Guarapuava</span>
+            <span class="unit-card__addr">R. Saldanha Marinho, 2131 - Centro, Guarapuava - PR</span>
+          </button>
+          <button class="unit-card" type="button" aria-pressed="false">
+            <span class="unit-card__city">Ponta Grossa</span>
+            <span class="unit-card__addr">Av. Dom Pedro II, 333 - Nova Rússia, Ponta Grossa - PR</span>
+          </button>
+        </div>
+
+        <!-- PAINEL (foto + contatos) -->
+        <div class="uni__panel reveal">
+          <div class="uni__photo is-active" style="background-image:url('assets/academia-ajuste-unidade-xaxim.jpg')"></div>
+          <div class="uni__photo" style="background-image:url('assets/academia-ajuste-unidade-campo-mourao.jpg')"></div>
+          <div class="uni__photo" style="background-image:url('assets/academia-ajuste-unidade-toledo.jpg')"></div>
+          <div class="uni__photo" style="background-image:url('assets/academia-ajuste-unidade-guarapuava.jpg')"></div>
+          <div class="uni__photo" style="background-image:url('assets/academia-ajuste-unidade-ponta-grossa.jpg')"></div>
+          <div class="uni__shade" aria-hidden="true"></div>
+          <div class="uni__info in">
+            <h3 class="uni__name">Ajuste Xaxim</h3>
+            <p class="uni__addr">Rua Antônio Rebelatto, 324 - Xaxim, Curitiba - PR</p>
+            <div class="uni__links">
+              <a class="uni__btn uni__btn--wpp" href="https://wa.me/5541984892765" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="#06351a"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.737-.979zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                WhatsApp
+              </a>
+              <a class="uni__btn uni__btn--ig" href="https://instagram.com/ajuste_xaxim" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.97.24 2.67.51.72.28 1.33.66 1.94 1.27.61.61.99 1.22 1.27 1.94.27.7.46 1.5.51 2.67.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.17-.24 1.97-.51 2.67-.28.72-.66 1.33-1.27 1.94-.61.61-1.22.99-1.94 1.27-.7.27-1.5.46-2.67.51-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.17-.05-1.97-.24-2.67-.51a5.4 5.4 0 01-1.94-1.27 5.4 5.4 0 01-1.27-1.94c-.27-.7-.46-1.5-.51-2.67C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.17.24-1.97.51-2.67.28-.72.66-1.33 1.27-1.94A5.4 5.4 0 015.99 2.78c.7-.27 1.5-.46 2.67-.51C9.96 2.2 10.36 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.21 8.49 3.2 8.86 3.2 12s.01 3.51.07 4.75c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.51 4.01 15.14 4 12 4zm0 3.06A4.94 4.94 0 1112 16.94 4.94 4.94 0 0112 7.06zm0 1.8A3.14 3.14 0 1012 15.14 3.14 3.14 0 0012 8.86zm5.14-3.24a1.15 1.15 0 110 2.3 1.15 1.15 0 010-2.3z"/></svg>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO VERMELHA ============ -->
+  <section class="unired">
+    <div class="unired__fx" aria-hidden="true">
+      <span class="fx-blob fx-blob--1"></span>
+      <span class="fx-blob fx-blob--2"></span>
+      <span class="fx-blob fx-blob--3"></span>
+      <span class="fx-sheen"></span>
+    </div>
+    <div class="unired__inner">
+      <h2 class="unired__title reveal">UMA REDE QUE CRESCE LEVANDO QUALIDADE,<br />ACOLHIMENTO E RESULTADO.</h2>
+      <p class="unired__p reveal">Desde a primeira unidade, nosso objetivo sempre foi o mesmo: criar academias onde as pessoas encontrem estrutura, acompanhamento e motivação para cuidar da própria saúde. Hoje, a Ajuste está presente em diferentes regiões do Paraná, levando essa mesma essência para mais pessoas.</p>
+      <p class="unired__p reveal">Mais do que expandir, buscamos levar nossa forma de cuidar das pessoas para cada nova cidade onde chegamos.</p>
+
+      <h2 class="unired__title2 reveal">A MESMA ESSÊNCIA EM CADA UNIDADE.</h2>
+      <p class="unired__sub reveal">Independentemente da cidade, todas as unidades Ajuste seguem um padrão construído ao longo dos anos.</p>
+
+      <div class="collage reveal">
+        <img src="assets/academia-ajuste-recepcao-catracas.png" alt="Recepção da unidade Ajuste" />
+        <img src="assets/academia-ajuste-fachada-unidade.png" alt="Área de musculação da Ajuste" />
+        <img src="assets/academia-ajuste-unidade-estacionamento.png" alt="Aluna treinando na Ajuste" />
+        <img src="assets/academia-ajuste-atendimento-recepcao.png" alt="Área de treino da Ajuste" />
+        <img src="assets/academia-ajuste-area-musculacao.png" alt="Recepção da unidade Ajuste" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (padrão do site) ============ -->
+  <footer class="foot">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="assets/logo.svg" alt="Academia Ajuste" />
+        <p class="foot__desc">Desde o primeiro dia, nosso compromisso nunca foi apenas abrir academias. Foi criar espaços onde as pessoas sintam vontade de voltar, encontrem apoio para alcançar seus objetivos e façam da atividade física um hábito para a vida.</p>
+        <div class="foot__social" aria-label="Redes sociais">
+          <a href="https://instagram.com/ajuste_xaxim" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.97.24 2.67.51.72.28 1.33.66 1.94 1.27.61.61.99 1.22 1.27 1.94.27.7.46 1.5.51 2.67.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.17-.24 1.97-.51 2.67-.28.72-.66 1.33-1.27 1.94-.61.61-1.22.99-1.94 1.27-.7.27-1.5.46-2.67.51-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.17-.05-1.97-.24-2.67-.51a5.4 5.4 0 0 1-1.94-1.27 5.4 5.4 0 0 1-1.27-1.94c-.27-.7-.46-1.5-.51-2.67C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.17.24-1.97.51-2.67.28-.72.66-1.33 1.27-1.94A5.4 5.4 0 0 1 5.99 2.78c.7-.27 1.5-.46 2.67-.51C9.96 2.2 10.36 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.21 8.49 3.2 8.86 3.2 12s.01 3.51.07 4.75c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.51 4.01 15.14 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 16.94 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 12 15.14 3.14 3.14 0 0 0 12 8.86zm5.14-3.24a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg></a>
+          <a href="https://wa.me/5541984892765" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 1.8c2.18 0 4.23.85 5.77 2.39a8.13 8.13 0 0 1 2.39 5.77c0 4.5-3.66 8.16-8.16 8.16h-.01c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.16-8.16zm-4.6 4.42c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.07.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.62.71.23 1.36.2 1.88.12.57-.09 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.62-.91-2.21-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.57-.01z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="foot__col" aria-label="Acesso rápido">
+        <h3 class="foot__h">Acesso rápido</h3>
+        <a href="index.html">Início</a>
+        <a href="a-ajuste.html">A Ajuste</a>
+        <a href="modalidades.html">Modalidades</a>
+        <a href="unidades.html">Unidades</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+
+      <div class="foot__col">
+        <h3 class="foot__h">Nossos contatos</h3>
+        <p class="foot__contact"><strong>CEO – Academia Ajuste</strong></p>
+        <p class="foot__contact">R. Emanuel Kant, 60 – Capão Raso<br />Curitiba – PR, 81020-670</p>
+      </div>
+    </div>
+
+    <div class="foot__bar">
+      <p class="foot__copy">© 2026 Rede Ajuste. Todos os direitos reservados.</p>
+      <p class="foot__credits">
+        <a class="foot__dev" href="https://www.behance.net/tuliohenrique1" target="_blank" rel="noopener noreferrer">Design ux e ui | Túlio Henrique</a>
+        <span class="foot__sep">·</span>
+        <a class="foot__dev" href="https://github.com/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3"></script>
+  <script>
+    /* ---- interação das unidades: clicar troca a foto + contatos (com animação) ---- */
+    (function(){
+      var cards=document.querySelectorAll('.unit-card');
+      var photos=document.querySelectorAll('.uni__photo');
+      var info=document.querySelector('.uni__info');
+      var nameEl=document.querySelector('.uni__name');
+      var addrEl=document.querySelector('.uni__addr');
+      var wpp=document.querySelector('.uni__btn--wpp');
+      var ig=document.querySelector('.uni__btn--ig');
+      if(!cards.length||!photos.length||!info) return;
+      var DATA=[
+        {name:'Ajuste Xaxim',addr:'Rua Antônio Rebelatto, 324 - Xaxim, Curitiba - PR',wpp:'5541984892765',ig:'ajuste_xaxim'},
+        {name:'Ajuste Campo Mourão',addr:'Av. Goioerê, 1960 - Centro, Campo Mourão - PR',wpp:'5544999703458',ig:'ajuste_campomourao'},
+        {name:'Ajuste Toledo',addr:'Av. Maripá, 3563 - Vila Operária, Toledo - PR',wpp:'5545999832490',ig:'ajustetoledo'},
+        {name:'Ajuste Guarapuava',addr:'R. Saldanha Marinho, 2131 - Centro, Guarapuava - PR',wpp:'5542999694385',ig:'ajustegrp'},
+        {name:'Ajuste Ponta Grossa',addr:'Av. Dom Pedro II, 333 - Nova Rússia, Ponta Grossa - PR',wpp:'5542988182495',ig:'ajuste_pontagrossa'}
+      ];
+      function sel(i){
+        for(var k=0;k<cards.length;k++){ cards[k].classList.toggle('is-active',k===i); cards[k].setAttribute('aria-pressed',k===i?'true':'false'); }
+        for(var j=0;j<photos.length;j++){ photos[j].classList.toggle('is-active',j===i); }
+        var d=DATA[i]; if(!d) return;
+        nameEl.textContent=d.name; addrEl.textContent=d.addr;
+        wpp.href='https://wa.me/'+d.wpp; ig.href='https://instagram.com/'+d.ig;
+        info.classList.remove('in'); void info.offsetWidth; info.classList.add('in');
+      }
+      for(var k=0;k<cards.length;k++){ (function(idx){ cards[idx].addEventListener('click',function(){sel(idx);}); cards[idx].addEventListener('mouseenter',function(){sel(idx);}); })(k); }
+    })();
+  </script>
+</body>
+</html>
