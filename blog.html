@@ -4,34 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog — Rede Ajuste</title>
-  <meta name="description" content="Blog da Rede Ajuste: artigos sobre musculação, emagrecimento, alimentação, qualidade de vida e bem-estar, produzidos pelos nossos professores para transformar conhecimento em resultados." />
+  <meta name="description" content="Blog da Rede Ajuste: artigos sobre musculação, emagrecimento, alimentação e bem-estar para transformar conhecimento em resultados." />
+  <link rel="canonical" href="https://academiaajuste.com.br/blog" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#CC1F27" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Academia Ajuste" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Blog — Rede Ajuste" />
+  <meta property="og:description" content="Blog da Rede Ajuste: artigos sobre musculação, emagrecimento, alimentação e bem-estar para transformar conhecimento em resultados." />
+  <meta property="og:url" content="https://academiaajuste.com.br/blog" />
+  <meta property="og:image" content="https://academiaajuste.com.br/assets/og-academia-ajuste.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Rede Ajuste" />
+  <meta name="twitter:description" content="Blog da Rede Ajuste: artigos sobre musculação, emagrecimento, alimentação e bem-estar para transformar conhecimento em resultados." />
+  <meta name="twitter:image" content="https://academiaajuste.com.br/assets/og-academia-ajuste.jpg" />
+  <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png" />
+  <link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <!-- marca que o JS está ativo: só então escondemos os elementos de reveal -->
-  <script>document.documentElement.className += " js";</script>
+  <script>(function(){var d=document.documentElement;d.className+=" js";function go(){if((" "+d.className+" ").indexOf(" page-go ")<0){d.className+=" page-go";}}if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){go();return;}var t=setTimeout(go,3000);window.addEventListener("load",function(){clearTimeout(t);go();});})();</script>
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="preload" href="assets/fonts/bebas-neue-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
+  <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
   <!-- NAV — barra padrão (igual às demais páginas). "Blog" ativo. -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="index.html" aria-label="Academia Ajuste">
+    <a class="nav__logo" href="/" aria-label="Academia Ajuste">
       <img src="assets/logo.svg" alt="Academia Ajuste" width="119" height="47" />
     </a>
     <nav class="nav__menu" id="navMenu" aria-label="Menu principal">
-      <a href="index.html">Início</a>
-      <a href="a-ajuste.html">A Ajuste</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="unidades.html">Unidades</a>
-      <a href="blog.html" class="is-active">Blog</a>
-      <a href="unidades.html" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+      <a href="/">Início</a>
+      <a href="/a-ajuste">A Ajuste</a>
+      <a href="/modalidades">Modalidades</a>
+      <a href="/unidades">Unidades</a>
+      <a href="/blog" class="is-active">Blog</a>
+      <a href="/unidades" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
     </nav>
-    <a href="unidades.html" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    <a href="/unidades" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </button>
   </header>
+  <div id="conteudo" tabindex="-1"></div>
 
   <!-- ============ BLOG (fundo escuro, padrão do site) ============ -->
   <main class="bpage" id="topo">
@@ -43,10 +63,10 @@
       <span class="fx-sheen"></span>
     </div>
     <!-- marca d'água lateral "ajuste" (padrão do site) -->
-    <img class="aw-mark" src="assets/about-ajuste-mark.png" alt="" aria-hidden="true" />
+    <img class="aw-mark" src="assets/about-ajuste-mark.png" alt="" aria-hidden="true" width="471" height="1598" loading="lazy" decoding="async" />
 
     <!-- foto do hero (boxe) sangrando no canto superior direito -->
-    <img class="bhero__media" src="assets/academia-ajuste-treino-acompanhado.png" alt="Dupla treinando na Ajuste" />
+    <img class="bhero__media" src="assets/academia-ajuste-treino-acompanhado.avif" alt="Dupla treinando na Ajuste" width="1252" height="896" fetchpriority="high" decoding="async" />
 
     <div class="bpage__inner">
       <!-- ---- HERO ---- -->
@@ -65,7 +85,7 @@
       <!-- ---- ARTIGO EM DESTAQUE ---- -->
       <article class="bfeat">
         <figure class="bfeat__media reveal">
-          <img src="assets/academia-ajuste-treino-puxada.jpg" alt="Aluna na puxada" loading="lazy" />
+          <img src="assets/academia-ajuste-treino-puxada.jpg" alt="Aluna na puxada" loading="lazy" width="583" height="263" />
         </figure>
         <div class="bfeat__text">
           <h2 class="bmetal bfeat__title reveal">Conteúdo que transforma conhecimento em resultados.</h2>
@@ -78,9 +98,9 @@
       <section class="blatest">
         <h2 class="bmetal blatest__title reveal">Últimos blogs</h2>
         <div class="bgrid">
-          <a class="bcard reveal" href="blog-massa.html">
+          <a class="bcard reveal" href="/blog-massa">
             <span class="bcard__tag">Ganho de massa muscular</span>
-            <img class="bcard__img" src="assets/academia-ajuste-ganho-massa-muscular.jpg" alt="Estrutura de musculação da Ajuste" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-ganho-massa-muscular.jpg" alt="Estrutura de musculação da Ajuste" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Quanto tempo leva para ganhar massa muscular?</h3>
@@ -88,9 +108,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="blog-ansiedade.html">
+          <a class="bcard reveal" href="/blog-ansiedade">
             <span class="bcard__tag">Saúde mental</span>
-            <img class="bcard__img" src="assets/academia-ajuste-exercicio-ansiedade.jpg" alt="Aluna alongando antes do treino" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-exercicio-ansiedade.jpg" alt="Aluna alongando antes do treino" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Exercícios ajudam na ansiedade?</h3>
@@ -98,9 +118,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="blog-preguica.html">
+          <a class="bcard reveal" href="/blog-preguica">
             <span class="bcard__tag">Importância dos exercícios</span>
-            <img class="bcard__img" src="assets/academia-ajuste-motivacao-treino.jpg" alt="Aluna na musculação" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-motivacao-treino.jpg" alt="Aluna na musculação" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Como vencer a preguiça de treinar?</h3>
@@ -108,9 +128,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="blog-pilates.html">
+          <a class="bcard reveal" href="/blog-pilates">
             <span class="bcard__tag">Pilates</span>
-            <img class="bcard__img" src="assets/academia-ajuste-aula-pilates.jpg" alt="Aula de pilates na Ajuste" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-aula-pilates.jpg" alt="Aula de pilates na Ajuste" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Pilates melhora dores nas costas?</h3>
@@ -120,7 +140,7 @@
 
           <a class="bcard reveal" href="#">
             <span class="bcard__tag">Alimentação</span>
-            <img class="bcard__img" src="assets/academia-ajuste-alimentacao-pre-treino.jpg" alt="Alimentos saudáveis" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-alimentacao-pre-treino.jpg" alt="Alimentos saudáveis" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">O que comer antes do treino?</h3>
@@ -130,7 +150,7 @@
 
           <a class="bcard reveal" href="#">
             <span class="bcard__tag">Recuperação</span>
-            <img class="bcard__img" src="assets/academia-ajuste-descanso-recuperacao.jpg" alt="Descanso e sono de qualidade" loading="lazy" />
+            <img class="bcard__img" src="assets/academia-ajuste-descanso-recuperacao.jpg" alt="Descanso e sono de qualidade" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">A importância do descanso para ganhar massa.</h3>
@@ -149,7 +169,7 @@
           <h2 class="bmetal bcta__title reveal">Gostou do conteúdo?</h2>
           <p class="bcta__k reveal">Agora é hora de colocar em prática.</p>
           <p class="bcta__lead reveal">Venha conhecer uma unidade Ajuste e descubra <br />como transformar conhecimento em resultados.</p>
-          <a class="bcta__btn reveal" href="unidades.html">Agenda uma aula experimental em<br />nossas unidades.</a>
+          <a class="bcta__btn reveal" href="/unidades">Agenda uma aula experimental em<br />nossas unidades.</a>
         </div>
       </div>
     </section>
@@ -169,11 +189,11 @@
 
       <nav class="foot__col" aria-label="Acesso rápido">
         <h3 class="foot__h">Acesso rápido</h3>
-        <a href="index.html">Início</a>
-        <a href="a-ajuste.html">A Ajuste</a>
-        <a href="modalidades.html">Modalidades</a>
-        <a href="unidades.html">Unidades</a>
-        <a href="blog.html">Blog</a>
+        <a href="/">Início</a>
+        <a href="/a-ajuste">A Ajuste</a>
+        <a href="/modalidades">Modalidades</a>
+        <a href="/unidades">Unidades</a>
+        <a href="/blog">Blog</a>
       </nav>
 
       <div class="foot__col">
@@ -188,10 +208,10 @@
       <p class="foot__credits">
         <a class="foot__dev" href="https://www.behance.net/tuliohenrique1" target="_blank" rel="noopener noreferrer">Design ux e ui | Túlio Henrique</a>
         <span class="foot__sep">·</span>
-        <a class="foot__dev" href="https://github.com/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
+        <a class="foot__dev" href="https://github.com/HiroDev-lab/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
       </p>
     </div>
   </footer>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

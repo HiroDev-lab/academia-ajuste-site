@@ -5,33 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Ajuste — Sobre a Academia | Rede Ajuste</title>
   <meta name="description" content="Sobre a Ajuste: academia criada em Curitiba que transforma vidas através da atividade física. Conheça nossa história, estrutura e propósito." />
+  <link rel="canonical" href="https://academiaajuste.com.br/a-ajuste" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#CC1F27" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Academia Ajuste" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="A Ajuste — Sobre a Academia | Rede Ajuste" />
+  <meta property="og:description" content="Sobre a Ajuste: academia criada em Curitiba que transforma vidas através da atividade física. Conheça nossa história, estrutura e propósito." />
+  <meta property="og:url" content="https://academiaajuste.com.br/a-ajuste" />
+  <meta property="og:image" content="https://academiaajuste.com.br/assets/og-academia-ajuste.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A Ajuste — Sobre a Academia | Rede Ajuste" />
+  <meta name="twitter:description" content="Sobre a Ajuste: academia criada em Curitiba que transforma vidas através da atividade física. Conheça nossa história, estrutura e propósito." />
+  <meta name="twitter:image" content="https://academiaajuste.com.br/assets/og-academia-ajuste.jpg" />
+  <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png" />
+  <link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <!-- marca que o JS está ativo: só então escondemos os elementos de reveal -->
-  <script>document.documentElement.className += " js";</script>
+  <script>(function(){var d=document.documentElement;d.className+=" js";function go(){if((" "+d.className+" ").indexOf(" page-go ")<0){d.className+=" page-go";}}if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){go();return;}var t=setTimeout(go,3000);window.addEventListener("load",function(){clearTimeout(t);go();});})();</script>
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="preload" href="assets/fonts/bebas-neue-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
+  <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
   <!-- NAV — barra padrão (igual à home). "Início" leva à home page. -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="index.html" aria-label="Academia Ajuste">
+    <a class="nav__logo" href="/" aria-label="Academia Ajuste">
       <img src="assets/logo.svg" alt="Academia Ajuste" width="119" height="47" />
     </a>
     <nav class="nav__menu" id="navMenu" aria-label="Menu principal">
-      <a href="index.html">Início</a>
-      <a href="a-ajuste.html" class="is-active">A Ajuste</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="unidades.html">Unidades</a>
-      <a href="blog.html">Blog</a>
-      <a href="unidades.html" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+      <a href="/">Início</a>
+      <a href="/a-ajuste" class="is-active">A Ajuste</a>
+      <a href="/modalidades">Modalidades</a>
+      <a href="/unidades">Unidades</a>
+      <a href="/blog">Blog</a>
+      <a href="/unidades" class="nav__cta nav__cta--mobile">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
     </nav>
-    <a href="unidades.html" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
+    <a href="/unidades" class="nav__cta nav__cta--desktop">MATRICULA JÁ <span class="nav__cta-arrow">»</span></a>
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </button>
   </header>
+  <div id="conteudo" tabindex="-1"></div>
 
   <!-- ============ INTRO "A AJUSTE" (fundo vermelho animado) ============ -->
   <section class="ahero" id="topo">
@@ -59,7 +79,7 @@
       </p>
 
       <figure class="ahero__photo reveal">
-        <img src="assets/academia-ajuste-fundadores.png" alt="Os três fundadores da Academia Ajuste em um evento em Curitiba" />
+        <img src="assets/academia-ajuste-fundadores.avif" alt="Os três fundadores da Academia Ajuste em um evento em Curitiba" width="1092" height="431" fetchpriority="high" decoding="async" />
       </figure>
 
       <div class="ahero__boxes">
@@ -86,7 +106,7 @@
       </h2>
 
       <div class="ahero__cta reveal">
-        <a href="unidades.html" class="hbtn hbtn--primary">QUERO CONHECER UMA UNIDADE</a>
+        <a href="/unidades" class="hbtn hbtn--primary">QUERO CONHECER UMA UNIDADE</a>
       </div>
     </div>
 
@@ -103,7 +123,7 @@
     <span class="fx-blob fx-blob--2"></span>
     <span class="fx-blob fx-blob--3"></span>
   </div>
-  <img class="aw-mark" src="assets/about-ajuste-mark.png" alt="" aria-hidden="true" />
+  <img class="aw-mark" src="assets/about-ajuste-mark.png" alt="" aria-hidden="true" width="471" height="1598" loading="lazy" decoding="async" />
 
   <!-- ===== NOSSO MOVIMENTO ===== -->
   <section class="amove" id="movimento">
@@ -201,10 +221,10 @@
 
       <!-- card cinza = carrossel (menor, centralizado, como no PDF) — fotos reais 09/07 -->
       <div class="carousel card-cinza" id="diffCarousel" aria-label="Galeria de fotos da academia">
-        <div class="carousel__slide is-active" style="background-image:url('assets/academia-ajuste-equipamentos-modernos.png')"></div>
-        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-professora-acompanhando-aluna.png')"></div>
-        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-halteres-musculacao.png')"></div>
-        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-fachada-aerea.png')"></div>
+        <div class="carousel__slide is-active" style="background-image:url('assets/academia-ajuste-equipamentos-modernos.avif')"></div>
+        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-professora-acompanhando-aluna.avif')"></div>
+        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-halteres-musculacao.avif')"></div>
+        <div class="carousel__slide" style="background-image:url('assets/academia-ajuste-fachada-aerea.avif')"></div>
         <div class="carousel__dots" id="diffDots" aria-hidden="true"></div>
       </div>
     </div>
@@ -263,7 +283,7 @@
         <p class="marca__p reveal">Hoje, a Ajuste está presente em Curitiba (Xaxim), Campo Mourão, Guarapuava, Toledo e Ponta Grossa, conectando milhares de pessoas a um estilo de vida mais saudável, ativo e equilibrado.</p>
       </div>
       <div class="marca__photo reveal">
-        <img src="assets/academia-ajuste-fachada-letreiro.jpg" alt="Fachada da Academia Ajuste com o letreiro academia ajuste" />
+        <img src="assets/academia-ajuste-fachada-letreiro.avif" alt="Fachada da Academia Ajuste com o letreiro academia ajuste" width="1600" height="900" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -282,11 +302,11 @@
 
       <nav class="foot__col" aria-label="Acesso rápido">
         <h3 class="foot__h">Acesso rápido</h3>
-        <a href="index.html">Início</a>
-        <a href="a-ajuste.html">A Ajuste</a>
-        <a href="modalidades.html">Modalidades</a>
-        <a href="unidades.html">Unidades</a>
-        <a href="blog.html">Blog</a>
+        <a href="/">Início</a>
+        <a href="/a-ajuste">A Ajuste</a>
+        <a href="/modalidades">Modalidades</a>
+        <a href="/unidades">Unidades</a>
+        <a href="/blog">Blog</a>
       </nav>
 
       <div class="foot__col">
@@ -301,10 +321,10 @@
       <p class="foot__credits">
         <a class="foot__dev" href="https://www.behance.net/tuliohenrique1" target="_blank" rel="noopener noreferrer">Design ux e ui | Túlio Henrique</a>
         <span class="foot__sep">·</span>
-        <a class="foot__dev" href="https://github.com/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
+        <a class="foot__dev" href="https://github.com/HiroDev-lab/HiroDev-lab" target="_blank" rel="noopener noreferrer">Desenvolvido por Hiro</a>
       </p>
     </div>
   </footer>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

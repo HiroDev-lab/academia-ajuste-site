@@ -1,3 +1,15 @@
+/* ===== FONTES SELF-HOSTED (woff2, latin+latin-ext) ===== */
+@font-face{font-family:"Bebas Neue";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/bebas-neue-400-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Bebas Neue";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/bebas-neue-400-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:100 500;font-display:swap;src:url("assets/fonts/poppins-400-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:100 500;font-display:swap;src:url("assets/fonts/poppins-400-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/poppins-600-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/poppins-600-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700 900;font-display:swap;src:url("assets/fonts/poppins-700-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700 900;font-display:swap;src:url("assets/fonts/poppins-700-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/archivo-700-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/archivo-700-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
 /* =========================================================
    Academia Ajuste — Hero (protótipo de animações)
    Paleta: vermelho #E5141B | preto #0a0506
@@ -32,7 +44,7 @@ a{text-decoration:none;color:inherit}
   min-height:100vh;
   display:flex;flex-direction:column;
   padding-bottom:0;
-  background:#120608 url("assets/bg.png") center top/cover no-repeat;
+  background:#120608 url("assets/bg.avif") center top/cover no-repeat;
   overflow:hidden;
   isolation:isolate;
 }
@@ -293,6 +305,19 @@ a{text-decoration:none;color:inherit}
 /* atletas: de fora da tela */
 .athlete--left{animation:slideInLeft 1.15s var(--ease-out) .3s backwards}
 .athlete--right{animation:slideInRight 1.15s var(--ease-out) .4s backwards}
+/* com JS: TODAS as entradas ficam pausadas (invisíveis, fill backwards) até a página
+   pintar — em conexão real elas rodavam antes da 1ª pintura (CSS carrega, fontes/fotos
+   não) e "não tocavam". O script inline do head marca html.page-go no window.load
+   (fallback 3s); os atletas soltam também no load das fotos (athletes-go, script.js).
+   Sem JS: rodam direto como antes. */
+html.js .nav__logo,html.js .nav__cta,html.js .nav__menu a,html.js .headline__line,
+html.js .hero__lead,html.js .hbtn--primary,html.js .hbtn--ghost,html.js .numbers,
+html.js .athlete--left,html.js .athlete--right{animation-play-state:paused}
+html.js.page-go .nav__logo,html.js.page-go .nav__cta,html.js.page-go .nav__menu a,
+html.js.page-go .headline__line,html.js.page-go .hero__lead,html.js.page-go .hbtn--primary,
+html.js.page-go .hbtn--ghost,html.js.page-go .numbers,
+html.js.page-go .athlete--left,html.js.page-go .athlete--right,
+html.js.athletes-go .athlete--left,html.js.athletes-go .athlete--right{animation-play-state:running}
 /* headline: rolagem (sobe de dentro da máscara) */
 .headline__line{animation:rollUp .9s var(--ease-out) .55s backwards}
 .headline__line--2{animation-delay:.72s}
@@ -481,7 +506,7 @@ a{text-decoration:none;color:inherit}
   position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
     linear-gradient(180deg,rgba(10,5,6,0) 55%,#0a0506 80%,#0a0506 100%),
-    url("assets/gym-bg.png") center 60%/cover no-repeat;
+    url("assets/gym-bg.avif") center 60%/cover no-repeat;
   -webkit-mask:linear-gradient(180deg,transparent 0%,transparent 42%,#000 52%,#000 100%);
           mask:linear-gradient(180deg,transparent 0%,transparent 42%,#000 52%,#000 100%);
 }
@@ -1459,3 +1484,118 @@ a{text-decoration:none;color:inherit}
   .bpost__split--reverse .bpost__media{order:0}
   .bpost__title{max-width:none}
 }
+
+
+/* ===== ACESSIBILIDADE ===== */
+.skip-link{position:absolute;top:-100%;left:16px;z-index:10000;padding:12px 24px;background:#CC1F27;color:#fff;text-decoration:none;border-radius:6px;font-weight:600}
+.skip-link:focus{top:16px}
+:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px rgba(204,31,39,.9)}
+#conteudo{outline:none}
+
+/* =========================================================
+   EYEBROW DO H1 (keyword SEO acima do headline)
+   ========================================================= */
+.headline__kw{display:block;font-family:"Poppins",sans-serif;font-weight:600;font-size:clamp(12px,1.1vw,15px);letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:14px;animation:fadeUp .8s var(--ease-out) .45s backwards}
+html.js .headline__kw{animation-play-state:paused}
+html.js.page-go .headline__kw{animation-play-state:running}
+
+/* =========================================================
+   SEÇÃO XTRA — conteúdo SEO (por que escolher / matrícula / FAQ)
+   ========================================================= */
+.xtra{position:relative;background:linear-gradient(180deg,#1c1416,#231a1c 45%,#1e1517);padding:clamp(60px,9vh,110px) clamp(20px,5vw,70px) clamp(70px,10vh,120px);overflow:hidden}
+.xtra::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 80% 10%,rgba(204,31,39,.14),transparent 70%),radial-gradient(50% 35% at 12% 80%,rgba(204,31,39,.10),transparent 70%);pointer-events:none}
+.xtra__inner{position:relative;max-width:980px;margin:0 auto}
+.xtra__head{text-align:center;margin-bottom:clamp(22px,3vh,34px)}
+.xtra__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(30px,4.6vw,58px);line-height:1;color:#fff;letter-spacing:.5px;margin-top:18px}
+.xtra__h2{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(24px,3.2vw,42px);line-height:1.04;color:#fff;letter-spacing:.5px;margin-bottom:clamp(14px,2vh,22px)}
+.xtra__block{margin-top:clamp(44px,7vh,72px)}
+.xtra__text p{color:rgba(255,255,255,.78);font-size:clamp(14.5px,1.15vw,16.5px);line-height:1.75;margin-bottom:14px}
+.xtra__text p:last-child{margin-bottom:0}
+.xtra__text a{color:#ff5a62;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,90,98,.4);transition:border-color .25s ease,color .25s ease}
+.xtra__text a:hover{color:#fff;border-color:#fff}
+.xtra__text strong{color:#fff}
+.xtra__steps{list-style:none;counter-reset:step;margin:18px 0;display:grid;gap:14px}
+.xtra__steps li{counter-increment:step;position:relative;padding:16px 20px 16px 64px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;color:rgba(255,255,255,.78);font-size:clamp(14px,1.1vw,16px);line-height:1.65}
+.xtra__steps li::before{content:counter(step);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:linear-gradient(160deg,#e22730,#9d141b);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center}
+.xtra__steps a{color:#ff5a62;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,90,98,.4)}
+.xtra__steps a:hover{color:#fff;border-color:#fff}
+.xtra__steps strong{color:#fff}
+.xtra__cta{margin-top:26px;text-align:center}
+
+/* ---- FAQ (details/summary nativo, acessível, sem JS) ---- */
+.faq{display:grid;gap:12px}
+.faq__item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:border-color .3s ease,background .3s ease}
+.faq__item[open]{border-color:rgba(204,31,39,.5);background:rgba(204,31,39,.07)}
+.faq__item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;color:#fff;font-weight:600;font-size:clamp(14.5px,1.15vw,16.5px);line-height:1.4;user-select:none}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{content:"+";flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:linear-gradient(160deg,#e22730,#9d141b);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:20px;display:flex;align-items:center;justify-content:center;transition:transform .3s ease}
+.faq__item[open] summary::after{content:"–";transform:rotate(180deg)}
+.faq__item summary:hover{color:#ffd7d9}
+.faq__item p{padding:0 20px 18px;color:rgba(255,255,255,.75);font-size:clamp(14px,1.1vw,15.5px);line-height:1.7}
+.faq__item a{color:#ff5a62;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,90,98,.4)}
+.faq__item a:hover{color:#fff;border-color:#fff}
+@media (max-width:560px){
+  .xtra__steps li{padding:14px 16px 14px 58px}
+  .faq__item summary{padding:16px 16px}
+  .faq__item p{padding:0 16px 16px}
+}
+
+/* =========================================================
+   CITYSEO — unidades por cidade (página unidades)
+   ========================================================= */
+.cityseo{position:relative;background:linear-gradient(180deg,#1c1416,#231a1c 50%,#1e1517);padding:clamp(56px,8vh,96px) clamp(20px,5vw,70px);overflow:hidden}
+.cityseo::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 40% at 85% 15%,rgba(204,31,39,.13),transparent 70%),radial-gradient(45% 35% at 10% 85%,rgba(204,31,39,.09),transparent 70%);pointer-events:none}
+.cityseo__inner{position:relative;max-width:1120px;margin:0 auto}
+.cityseo__head{text-align:center;margin-bottom:clamp(24px,4vh,40px)}
+.cityseo__lead{color:rgba(255,255,255,.7);font-size:clamp(14px,1.15vw,16px);margin-top:14px}
+.cityseo__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.cityseo__item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:clamp(20px,2.4vw,28px);transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.cityseo__item:hover{transform:translateY(-4px);border-color:rgba(204,31,39,.55);box-shadow:0 16px 34px rgba(0,0,0,.35)}
+.cityseo__item h2{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(22px,2.2vw,30px);line-height:1.05;color:#fff;letter-spacing:.5px;margin-bottom:10px}
+.cityseo__item p{color:rgba(255,255,255,.75);font-size:clamp(13.5px,1.05vw,15px);line-height:1.65;margin-bottom:10px}
+.cityseo__addr{color:rgba(255,255,255,.55)!important;font-size:12.5px!important}
+.cityseo__links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0!important}
+/* botões dos cards de cidade: mesmo idioma visual dos botões do painel de unidades */
+.cbtn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:700;line-height:1;white-space:nowrap;color:#fff;text-decoration:none;transition:transform .2s ease,filter .2s ease}
+.cbtn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.cbtn--go{background:linear-gradient(160deg,#e22730,#9d141b);box-shadow:0 10px 22px rgba(204,31,39,.3)}
+.cbtn--wpp{background:#25D366;color:#06351a;box-shadow:0 10px 22px rgba(37,211,102,.25)}
+.cbtn--ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);box-shadow:0 10px 22px rgba(220,39,67,.25)}
+
+/* mcard agora é link (clique leva a /modalidades) */
+a.mcard{display:block;color:inherit;text-decoration:none}
+
+/* =========================================================
+   MP — páginas de modalidade e de unidade (cidade)
+   ========================================================= */
+.mp{position:relative;background:linear-gradient(180deg,#20080a,#1c1416 18%,#231a1c 55%,#1e1517);color:#fff;overflow:hidden;padding:clamp(110px,14vh,150px) clamp(20px,5vw,70px) clamp(70px,10vh,110px)}
+.mp__fx{position:absolute;inset:-10%;z-index:0;overflow:hidden;pointer-events:none;opacity:.5}
+.mp .aw-mark{position:absolute;right:0;top:8%;height:min(60vh,900px);width:auto;opacity:.06;z-index:0;pointer-events:none;user-select:none}
+.mp__inner{position:relative;z-index:1;max-width:1020px;margin:0 auto}
+.mp__hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(26px,4vw,56px);align-items:center}
+.mp__title{font-family:"Bebas Neue",sans-serif;font-style:italic;font-size:clamp(36px,5.4vw,68px);line-height:1;letter-spacing:.5px;color:#fff;margin-top:16px}
+.mp__lead{color:rgba(255,255,255,.78);font-size:clamp(14.5px,1.2vw,17px);line-height:1.7;margin-top:14px;max-width:560px}
+.mp__addr{color:rgba(255,255,255,.55);font-size:13.5px;margin-top:10px}
+.mp__btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.mp__media{margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.mp__media img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}
+.mp__block{margin-top:clamp(44px,7vh,72px)}
+.mp__list{list-style:none;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.mp__list li{position:relative;padding:14px 16px 14px 46px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:rgba(255,255,255,.8);font-size:clamp(13.5px,1.05vw,15px);line-height:1.55}
+.mp__list li::before{content:"✓";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:linear-gradient(160deg,#e22730,#9d141b);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mp__pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.mp__pills a{display:inline-block;padding:9px 20px;border-radius:999px;font-size:13.5px;font-weight:600;color:#fff;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);transition:background .25s ease,border-color .25s ease,transform .25s ease}
+.mp__pills a:hover{background:linear-gradient(160deg,#e22730,#9d141b);border-color:transparent;transform:translateY(-2px)}
+.mp__map{position:relative;aspect-ratio:16/9;max-height:420px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);margin-top:18px;background:#181214}
+.mp__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mp__ctabox{background:linear-gradient(160deg,rgba(204,31,39,.16),rgba(204,31,39,.05));border:1px solid rgba(204,31,39,.35);border-radius:20px;padding:clamp(24px,3.4vw,40px);text-align:center}
+.mp__ctabox .xtra__text p{max-width:640px;margin-left:auto;margin-right:auto}
+@media (max-width:860px){
+  .mp__hero{grid-template-columns:1fr}
+  .mp__media{order:-1}
+  .mp__media img{max-height:340px}
+  .mp .aw-mark{display:none}
+}
+
+/* modcard agora é link (clique leva à página da modalidade) */
+a.modcard{display:block;color:inherit;text-decoration:none}

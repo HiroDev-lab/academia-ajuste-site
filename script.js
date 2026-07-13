@@ -41,16 +41,46 @@
      só cuida do menu mobile e dos contadores. Se o JS falhar, o hero aparece
      normalmente (nada fica escondido dependendo de JS). */
   function start() {
+    armAthleteEntrance();
     setupMenu();
     setupReveal();
     setupAthletesScroll();
     setupDiffs();
     setupUnits();
+    setupLazyFrames();
     setupStory();
     setupSwitches();
     setupCarousel();
-    // o bloco de números entra ~1,4s depois (CSS). O count-up = "primeiro aumento".
-    setTimeout(runCounters, reduce ? 0 : 1600);
+    // o bloco de números entra ~1,4s depois que a página "solta" (html.page-go).
+    // O count-up = "primeiro aumento" — então espera o page-go antes de contar.
+    whenPageGo(function () {
+      setTimeout(runCounters, reduce ? 0 : 1600);
+    });
+  }
+
+  /* espera o html.page-go (marcado pelo script inline do head no window.load) */
+  function whenPageGo(fn) {
+    var d = document.documentElement;
+    if (d.className.indexOf("page-go") >= 0) { fn(); return; }
+    var iv = setInterval(function () {
+      if (d.className.indexOf("page-go") >= 0) { clearInterval(iv); fn(); }
+    }, 100);
+  }
+
+  /* atletas: soltam a entrada assim que as 2 fotos carregarem (antes do window.load
+     completo, se der) — fallback 5s. Sem .athlete na página, marca direto. */
+  function armAthleteEntrance() {
+    var d = document.documentElement;
+    function go() { if (d.className.indexOf("athletes-go") < 0) d.className += " athletes-go"; }
+    var imgs = document.querySelectorAll(".athlete img");
+    if (!imgs.length || reduce) { go(); return; }
+    var left = imgs.length;
+    function one() { if (--left <= 0) go(); }
+    Array.prototype.forEach.call(imgs, function (im) {
+      if (im.complete && im.naturalWidth > 0) { one(); }
+      else { im.addEventListener("load", one); im.addEventListener("error", one); }
+    });
+    setTimeout(go, 5000);
   }
 
   /* ---- diferenciais trocam imagem + texto da box (layout/botão fixos) ---- */
@@ -132,6 +162,27 @@
       u.setAttribute("aria-pressed", u.classList.contains("is-active") ? "true" : "false");
       // o iframe já vem com Campo Mourão no HTML; só recarrega quando o usuário troca
       u.addEventListener("click", function () { select(u); });
+    });
+  }
+
+  /* ---- iframes lazy (Maps etc.): qualquer iframe[data-src] só carrega perto do viewport ---- */
+  function setupLazyFrames() {
+    var frames = document.querySelectorAll("iframe[data-src]");
+    if (!frames.length) return;
+    Array.prototype.forEach.call(frames, function (frame) {
+      var lazySrc = frame.getAttribute("data-src");
+      if (!lazySrc || frame.getAttribute("src")) return;
+      if ("IntersectionObserver" in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            if (!frame.getAttribute("src")) frame.src = lazySrc;
+            obs.disconnect();
+          }
+        }, { rootMargin: "400px" });
+        obs.observe(frame);
+      } else {
+        frame.src = lazySrc;
+      }
     });
   }
 
