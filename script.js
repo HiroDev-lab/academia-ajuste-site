@@ -246,9 +246,9 @@
     var order = [];
     blockChars.forEach(function (b) {
       var slow = !(b.el.classList.contains("story__p") || b.el.classList.contains("story__lead"));
-      var sp = slow ? 27 : 12;   // ms por caractere (mais rápido)
+      var sp = slow ? 8 : 4;    // ms por caractere (mais rápido)
       b.chars.forEach(function (c) { order.push({ c: c, sp: sp }); });
-      order.push({ gap: 150 });  // respiro entre blocos
+      order.push({ gap: 50 });   // respiro entre blocos
     });
 
     var started = false, skipped = false;
