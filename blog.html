@@ -29,7 +29,7 @@
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="preload" href="assets/fonts/bebas-neue-400-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
@@ -74,18 +74,18 @@
         <h1 class="bmetal bhero__title reveal">Conteúdo que transforma conhecimento em resultados.</h1>
         <p class="bhero__lead reveal">Descubra artigos sobre musculação, emagrecimento, qualidade de vida, atividade física, alimentação, longevidade e bem-estar, produzidos para ajudar você a conquistar uma rotina mais saudável.</p>
         <div class="bhero__pills reveal">
-          <span class="bpill">Musculação</span>
-          <span class="bpill">Emagrecimento</span>
-          <span class="bpill">Alimentação</span>
-          <span class="bpill">Saúde</span>
-          <span class="bpill">Performance</span>
+          <button type="button" class="bpill bpill--btn" data-busca="musculação">Musculação</button>
+          <button type="button" class="bpill bpill--btn" data-busca="treino">Treino</button>
+          <button type="button" class="bpill bpill--btn" data-busca="aula experimental">Aula experimental</button>
+          <button type="button" class="bpill bpill--btn" data-busca="saúde">Saúde</button>
+          <button type="button" class="bpill bpill--btn" data-busca="pilates">Pilates</button>
         </div>
       </section>
 
       <!-- ---- ARTIGO EM DESTAQUE ---- -->
       <article class="bfeat">
         <figure class="bfeat__media reveal">
-          <img src="assets/academia-ajuste-treino-puxada.jpg" alt="Aluna na puxada" loading="lazy" width="583" height="263" />
+          <img src="assets/academia-ajuste-treino-puxada.avif" alt="Aluna na puxada" loading="lazy" width="583" height="263" />
         </figure>
         <div class="bfeat__text">
           <h2 class="bmetal bfeat__title reveal">Conteúdo que transforma conhecimento em resultados.</h2>
@@ -94,11 +94,68 @@
         </div>
       </article>
 
-      <!-- ---- ÚLTIMOS BLOGS ---- -->
-      <section class="blatest">
+      <!-- ---- ÚLTIMOS BLOGS (busca + paginação de 6 em 6 via JS; sem JS todos os cards aparecem) ---- -->
+      <section class="blatest" id="ultimos">
         <h2 class="bmetal blatest__title reveal">Últimos blogs</h2>
-        <div class="bgrid">
-          <a class="bcard reveal" href="/academia-perto-de-mim-em-curitiba-xaxim">
+        <div class="btools reveal">
+          <div class="bsearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg>
+            <input type="search" id="blogSearch" placeholder="Buscar no blog… ex.: saúde, pilates, aula experimental" aria-label="Buscar artigos do blog" autocomplete="off" />
+          </div>
+          <span class="btools__count" id="blogCount" aria-live="polite"></span>
+        </div>
+        <div class="bgrid" id="blogGrid">
+          <a class="bcard reveal" href="/academia-com-aula-experimental-gratuita-em-curitiba-xaxim" data-k="aula experimental gratuita gratis agendar curitiba xaxim matricula treino academia">
+            <span class="bcard__tag">Curitiba · Xaxim</span>
+            <img class="bcard__img" src="assets/academia-ajuste-treino-acompanhado.avif" alt="Aluna treinando acompanhada por professor na Ajuste" loading="lazy" width="362" height="216" />
+            <div class="bcard__shade" aria-hidden="true"></div>
+            <div class="bcard__body">
+              <h3 class="bcard__t">Academia com aula experimental gratuita em Curitiba (Xaxim)?</h3>
+              <p class="bcard__d">Treine um dia grátis na unidade do Xaxim antes de decidir. Veja como agendar.</p>
+            </div>
+          </a>
+
+          <a class="bcard reveal" href="/academia-com-aula-experimental-gratuita-em-campo-mourao" data-k="aula experimental gratuita gratis agendar campo mourao matricula treino academia">
+            <span class="bcard__tag">Campo Mourão</span>
+            <img class="bcard__img" src="assets/academia-ajuste-atendimento-recepcao.avif" alt="Recepção da Academia Ajuste" loading="lazy" width="362" height="216" />
+            <div class="bcard__shade" aria-hidden="true"></div>
+            <div class="bcard__body">
+              <h3 class="bcard__t">Academia com aula experimental gratuita em Campo Mourão?</h3>
+              <p class="bcard__d">Conheça a Ajuste do Centro treinando um dia sem custo e sem compromisso.</p>
+            </div>
+          </a>
+
+          <a class="bcard reveal" href="/academia-com-aula-experimental-gratuita-em-toledo" data-k="aula experimental gratuita gratis agendar toledo matricula treino academia">
+            <span class="bcard__tag">Toledo</span>
+            <img class="bcard__img" src="assets/academia-ajuste-aulas-coletivas.avif" alt="Aula coletiva na Academia Ajuste" loading="lazy" width="362" height="216" />
+            <div class="bcard__shade" aria-hidden="true"></div>
+            <div class="bcard__body">
+              <h3 class="bcard__t">Academia com aula experimental gratuita em Toledo?</h3>
+              <p class="bcard__d">Agende pelo WhatsApp e treine um dia grátis na unidade da Vila Operária.</p>
+            </div>
+          </a>
+
+          <a class="bcard reveal" href="/academia-com-aula-experimental-gratuita-em-guarapuava" data-k="aula experimental gratuita gratis agendar guarapuava matricula treino academia">
+            <span class="bcard__tag">Guarapuava</span>
+            <img class="bcard__img" src="assets/academia-ajuste-estrutura-musculacao.avif" alt="Estrutura de musculação da Academia Ajuste" loading="lazy" width="362" height="216" />
+            <div class="bcard__shade" aria-hidden="true"></div>
+            <div class="bcard__body">
+              <h3 class="bcard__t">Academia com aula experimental gratuita em Guarapuava?</h3>
+              <p class="bcard__d">Teste a unidade mais completa da rede com uma aula grátis, sem compromisso.</p>
+            </div>
+          </a>
+
+          <a class="bcard reveal" href="/academia-com-aula-experimental-gratuita-em-ponta-grossa" data-k="aula experimental gratuita gratis agendar ponta grossa matricula treino academia">
+            <span class="bcard__tag">Ponta Grossa</span>
+            <img class="bcard__img" src="assets/academia-ajuste-aluno-treinando-sorrindo.avif" alt="Aluno treinando sorrindo na Academia Ajuste" loading="lazy" width="362" height="216" />
+            <div class="bcard__shade" aria-hidden="true"></div>
+            <div class="bcard__body">
+              <h3 class="bcard__t">Academia com aula experimental gratuita em Ponta Grossa?</h3>
+              <p class="bcard__d">Treine um dia grátis na unidade da Nova Rússia antes de se matricular.</p>
+            </div>
+          </a>
+
+          <a class="bcard reveal" href="/academia-perto-de-mim-em-curitiba-xaxim" data-k="academia perto de mim curitiba xaxim unidade endereco localizacao onde fica">
             <span class="bcard__tag">Curitiba · Xaxim</span>
             <img class="bcard__img" src="assets/academia-ajuste-unidade-xaxim.avif" alt="Fachada da unidade Ajuste no Xaxim, em Curitiba" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
@@ -108,7 +165,7 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/academia-perto-de-mim-em-campo-mourao">
+          <a class="bcard reveal" href="/academia-perto-de-mim-em-campo-mourao" data-k="academia perto de mim campo mourao unidade endereco localizacao onde fica">
             <span class="bcard__tag">Campo Mourão</span>
             <img class="bcard__img" src="assets/academia-ajuste-unidade-campo-mourao.avif" alt="Unidade Ajuste no Centro de Campo Mourão" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
@@ -118,7 +175,7 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/academia-perto-de-mim-em-toledo">
+          <a class="bcard reveal" href="/academia-perto-de-mim-em-toledo" data-k="academia perto de mim toledo unidade endereco localizacao onde fica">
             <span class="bcard__tag">Toledo</span>
             <img class="bcard__img" src="assets/academia-ajuste-unidade-toledo.avif" alt="Unidade Ajuste na Vila Operária, em Toledo" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
@@ -128,7 +185,7 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/academia-perto-de-mim-em-guarapuava">
+          <a class="bcard reveal" href="/academia-perto-de-mim-em-guarapuava" data-k="academia perto de mim guarapuava unidade endereco localizacao onde fica">
             <span class="bcard__tag">Guarapuava</span>
             <img class="bcard__img" src="assets/academia-ajuste-unidade-guarapuava.avif" alt="Unidade Ajuste no Centro de Guarapuava" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
@@ -138,7 +195,7 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/academia-perto-de-mim-em-ponta-grossa">
+          <a class="bcard reveal" href="/academia-perto-de-mim-em-ponta-grossa" data-k="academia perto de mim ponta grossa unidade endereco localizacao onde fica">
             <span class="bcard__tag">Ponta Grossa</span>
             <img class="bcard__img" src="assets/academia-ajuste-unidade-ponta-grossa.avif" alt="Unidade Ajuste na Nova Rússia, em Ponta Grossa" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
@@ -148,9 +205,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/blog-massa">
+          <a class="bcard reveal" href="/blog-massa" data-k="musculacao hipertrofia ganhar massa muscular treino resultados tempo evolucao">
             <span class="bcard__tag">Ganho de massa muscular</span>
-            <img class="bcard__img" src="assets/academia-ajuste-ganho-massa-muscular.jpg" alt="Estrutura de musculação da Ajuste" loading="lazy" width="362" height="216" />
+            <img class="bcard__img" src="assets/academia-ajuste-ganho-massa-muscular.avif" alt="Estrutura de musculação da Ajuste" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Quanto tempo leva para ganhar massa muscular?</h3>
@@ -158,9 +215,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/blog-ansiedade">
+          <a class="bcard reveal" href="/blog-ansiedade" data-k="saude mental ansiedade exercicio atividade fisica bem estar estresse qualidade de vida">
             <span class="bcard__tag">Saúde mental</span>
-            <img class="bcard__img" src="assets/academia-ajuste-exercicio-ansiedade.jpg" alt="Aluna alongando antes do treino" loading="lazy" width="362" height="216" />
+            <img class="bcard__img" src="assets/academia-ajuste-exercicio-ansiedade.avif" alt="Aluna alongando antes do treino" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Exercícios ajudam na ansiedade?</h3>
@@ -168,9 +225,9 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/blog-preguica">
+          <a class="bcard reveal" href="/blog-preguica" data-k="motivacao preguica treinar constancia habito importancia dos exercicios saude rotina">
             <span class="bcard__tag">Importância dos exercícios</span>
-            <img class="bcard__img" src="assets/academia-ajuste-motivacao-treino.jpg" alt="Aluna na musculação" loading="lazy" width="362" height="216" />
+            <img class="bcard__img" src="assets/academia-ajuste-motivacao-treino.avif" alt="Aluna na musculação" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Como vencer a preguiça de treinar?</h3>
@@ -178,36 +235,18 @@
             </div>
           </a>
 
-          <a class="bcard reveal" href="/blog-pilates">
+          <a class="bcard reveal" href="/blog-pilates" data-k="pilates dor nas costas coluna postura flexibilidade qualidade de vida saude bem estar">
             <span class="bcard__tag">Pilates</span>
-            <img class="bcard__img" src="assets/academia-ajuste-aula-pilates.jpg" alt="Aula de pilates na Ajuste" loading="lazy" width="362" height="216" />
+            <img class="bcard__img" src="assets/academia-ajuste-aula-pilates.avif" alt="Aula de pilates na Ajuste" loading="lazy" width="362" height="216" />
             <div class="bcard__shade" aria-hidden="true"></div>
             <div class="bcard__body">
               <h3 class="bcard__t">Pilates melhora dores nas costas?</h3>
               <p class="bcard__d">Entenda quando a modalidade pode ser uma aliada da sua qualidade de vida.</p>
             </div>
           </a>
-
-          <a class="bcard reveal" href="#">
-            <span class="bcard__tag">Alimentação</span>
-            <img class="bcard__img" src="assets/academia-ajuste-alimentacao-pre-treino.jpg" alt="Alimentos saudáveis" loading="lazy" width="362" height="216" />
-            <div class="bcard__shade" aria-hidden="true"></div>
-            <div class="bcard__body">
-              <h3 class="bcard__t">O que comer antes do treino?</h3>
-              <p class="bcard__d">Alimentos que ajudam no desempenho e na recuperação muscular.</p>
-            </div>
-          </a>
-
-          <a class="bcard reveal" href="#">
-            <span class="bcard__tag">Recuperação</span>
-            <img class="bcard__img" src="assets/academia-ajuste-descanso-recuperacao.jpg" alt="Descanso e sono de qualidade" loading="lazy" width="362" height="216" />
-            <div class="bcard__shade" aria-hidden="true"></div>
-            <div class="bcard__body">
-              <h3 class="bcard__t">A importância do descanso para ganhar massa.</h3>
-              <p class="bcard__d">Dormir bem também faz parte do treino.</p>
-            </div>
-          </a>
         </div>
+        <p class="bnores" id="blogEmpty" hidden>Nenhum artigo encontrado. <button type="button" class="bnores__clear" id="blogClear">Limpar busca</button></p>
+        <nav class="bpager" id="blogPager" aria-label="Páginas do blog"></nav>
       </section>
     </div>
 
@@ -263,6 +302,6 @@
       </p>
     </div>
   </footer>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

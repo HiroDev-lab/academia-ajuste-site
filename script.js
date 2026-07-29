@@ -51,6 +51,7 @@
     setupStory();
     setupSwitches();
     setupCarousel();
+    setupBlogIndex();
     // o bloco de números entra ~1,4s depois que a página "solta" (html.page-go).
     // O count-up = "primeiro aumento" — então espera o page-go antes de contar.
     whenPageGo(function () {
@@ -81,6 +82,110 @@
       else { im.addEventListener("load", one); im.addEventListener("error", one); }
     });
     setTimeout(go, 5000);
+  }
+
+  /* ---- índice do blog: busca (sem acento) + paginação de 6 em 6 ---- */
+  function setupBlogIndex() {
+    var grid = document.getElementById("blogGrid");
+    var input = document.getElementById("blogSearch");
+    var pager = document.getElementById("blogPager");
+    if (!grid || !input || !pager) return;
+
+    var PAGE = 6;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".bcard"));
+    var empty = document.getElementById("blogEmpty");
+    var clear = document.getElementById("blogClear");
+    var count = document.getElementById("blogCount");
+    var pills = document.querySelectorAll(".bpill--btn");
+    var page = 1;
+
+    function norm(s) {
+      s = (s || "").toLowerCase();
+      try { s = s.normalize("NFD").replace(/[̀-ͯ]/g, ""); } catch (e) {}
+      return s;
+    }
+    // texto pesquisável de cada card: tag + título + descrição + palavras-chave
+    var index = cards.map(function (c) {
+      return norm(c.textContent + " " + (c.getAttribute("data-k") || ""));
+    });
+
+    function apply(scroll) {
+      var q = norm(input.value).trim();
+      var terms = q.split(/\s+/).filter(Boolean);
+      var hits = [];
+      cards.forEach(function (c, i) {
+        var ok = terms.every(function (t) { return index[i].indexOf(t) >= 0; });
+        if (ok) hits.push(c);
+      });
+      var pages = Math.max(1, Math.ceil(hits.length / PAGE));
+      if (page > pages) page = pages;
+      var from = (page - 1) * PAGE, to = from + PAGE;
+
+      var shown = 0;
+      cards.forEach(function (c) {
+        var pos = hits.indexOf(c);
+        var show = pos >= from && pos < to;
+        c.classList.toggle("is-hide", !show);
+        if (show) {
+          c.style.transitionDelay = (shown % PAGE) * 0.06 + "s";
+          shown++;
+        }
+      });
+
+      if (empty) empty.hidden = hits.length > 0;
+      if (count) count.textContent = q
+        ? hits.length + (hits.length === 1 ? " artigo encontrado" : " artigos encontrados")
+        : cards.length + " artigos";
+
+      // marca a pill ativa (se a busca bate com o data-busca dela)
+      Array.prototype.forEach.call(pills, function (p) {
+        p.classList.toggle("is-on", q !== "" && norm(p.getAttribute("data-busca")) === q);
+      });
+
+      // paginação
+      pager.innerHTML = "";
+      pager.classList.toggle("is-show", pages > 1);
+      if (pages > 1) {
+        var mk = function (label, target, opts) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "bpager__btn" + (opts && opts.on ? " is-on" : "");
+          b.textContent = label;
+          if (opts && opts.aria) b.setAttribute("aria-label", opts.aria);
+          if (opts && opts.dis) b.disabled = true;
+          else b.addEventListener("click", function () { page = target; apply(true); });
+          pager.appendChild(b);
+        };
+        mk("‹", page - 1, { aria: "Página anterior", dis: page === 1 });
+        for (var p = 1; p <= pages; p++) mk(String(p), p, { on: p === page });
+        mk("›", page + 1, { aria: "Próxima página", dis: page === pages });
+      }
+
+      if (scroll) {
+        var top = document.getElementById("ultimos");
+        if (top) top.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      }
+    }
+
+    var deb;
+    input.addEventListener("input", function () {
+      clearTimeout(deb);
+      deb = setTimeout(function () { page = 1; apply(false); }, 180);
+    });
+    if (clear) clear.addEventListener("click", function () {
+      input.value = ""; page = 1; apply(false); input.focus();
+    });
+    Array.prototype.forEach.call(pills, function (p) {
+      p.addEventListener("click", function () {
+        var q = p.getAttribute("data-busca") || p.textContent;
+        // clicar de novo na pill ativa limpa o filtro
+        input.value = p.classList.contains("is-on") ? "" : q;
+        page = 1;
+        apply(true);
+      });
+    });
+
+    apply(false);
   }
 
   /* ---- diferenciais trocam imagem + texto da box (layout/botão fixos) ---- */
